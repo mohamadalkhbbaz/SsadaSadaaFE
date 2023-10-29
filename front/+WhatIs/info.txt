@@ -1,0 +1,47 @@
+Navication 
+التنقل بين الصفحات من قبل كان ينتقل ل 
+url تاني 
+اما ب ريأكت او مكاتب الفرونت ف هي لا يتم تحميل الصحفة من جديد او الانتقال ل
+ url ثاني 
+ وهو ل بقلولو SPA > single page application
+
+
+
+ نفتح متصحف ثم الكونسول 
+
+ window.location
+ => برجع معلومات عن الصفحة ل فاتحها انت
+ (host, hostName, pathName ,)
+ pathName > "\home"
+    hash
+""
+host
+"localhost:3000"
+hostname
+"localhost"
+href
+"http://localhost:3000/"
+origin
+"http://localhost:3000"
+pathname
+"/"
+port
+"3000"
+protocol
+"http:"
+
+
+
+/////
+npm react-router-dom
+
+     
+     بحط كلشي مكونات رح تخضع ل نظام هل روات ضمن 
+    هل تاغ 
+
+    <BrowserRouter>
+    
+    </BrowserRouter>
+
+      <Link to="/" > Go To Home</Link> بدل
+      <a> </a> 
