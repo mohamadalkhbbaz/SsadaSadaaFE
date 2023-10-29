@@ -1,0 +1,63 @@
+class component 
+تكتب كود طويل ومعت 
+function component
+تكتب كود اقل واكثر دقة 
+
+hooks 
+تم عملها خصيصا ل 
+function component
+
+.....Hooks 
+useState 
+تدل على الوضع الحالي ل المتغير 
+اي تغيير بيصير على هل متغير بيخلي الكومبوننت يعمل ري رندره 
+const [val,setVal] = useState(initalvalue)
+
+useEffect
+useContext
+useRef
+useReducer
+useMemo
+
+
+
+
+
+2. useEffect
+To make life sycle methods in differnt times
+useEffect(function,[input])
+by default run when component fitsttime ,or dependency element change 
+
+
+تتنفذ لما تحصل تأثيرات معينه 
+لما المكون يرن اول مرة او لما يصير في ابديت ل شغله وبدك يصير تجيب اخر ابديت لهل داتا 
+
+
+
+    useEffect(()=> console.log('useEffect') , [])
+    there status for two paramenter 
+    1. empty -> firesTime , when reRender Component 
+    2. [] -> firesTime just 
+    3. add var -> firesTime , when change var 
+
+
+
+3. useRef 
+تشاور على ايليمنت معين 
+
+
+4. useContext
+استخدمه مشان اخزن قيم ما ضل اخد قيم من مكون ل مكون تاني 
+مشان نستخدمها لازم نتعلم 
+contextApi
+
+
+
+
+
+#Note
+1.    const HandleAddValue = ()=> setCounter(counter+parseInt(inputValue))
+to add as a number 
+2.        value2.current.focus(); ل تروح ع هل input وتشاور عليها 
+
+   
