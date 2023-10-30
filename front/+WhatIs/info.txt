@@ -52,6 +52,12 @@ by default run when component fitsttime ,or dependency element change
 const value = useMemo(()=> function(...),[a,b]);
 
 
+5. useReducer 
+نفس فكرة الكونتكست 
+الريديوسر يتيح لك استعمال الكومبلكس ستيت 
+فهمها جيدا سوف يسهل عليك فهم الريدكس 
+
+
 
 
 #Note
