@@ -46,11 +46,10 @@ by default run when component fitsttime ,or dependency element change
 تشاور على ايليمنت معين 
 
 
-4. useContext
-استخدمه مشان اخزن قيم ما ضل اخد قيم من مكون ل مكون تاني 
-مشان نستخدمها لازم نتعلم 
-contextApi
-
+4. useMemo
+لا تستعمل كثيرا 
+تستخدم ل تخزين قيمة بداخلها     
+const value = useMemo(()=> function(...),[a,b]);
 
 
 
