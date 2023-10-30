@@ -1,0 +1,4 @@
+Go Pro
+
+props we will use it to pass data from pareint component to child component
+ 
