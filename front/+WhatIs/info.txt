@@ -1,1 +1,106 @@
-Go PRo
+Cookies:
+•	Creation Year: Cookies have been around since the early days of the web, introduced in the Netscape browser in 1994.
+•	Use For:
+•	Session Management: Cookies are often used for session management. They can store information about the user's session, such as user authentication tokens.
+•	Personalization: Cookies can be used to store user preferences and settings.
+•	Tracking: Cookies are commonly used for tracking user behavior and analytics.
+•	Cross-Site Communication: Cookies can be utilized for cross-site communication in some scenarios.
+•	Characteristics:
+•	Size Limit: Limited to a few kilobytes (typically around 4 KB per cookie).
+•	Expiration: Can be set with an expiration date or be session-only.
+•	Sent with Requests: Cookies are automatically sent with every HTTP request to the domain.
+
+sessionStorage:
+•	Creation Year: Introduced with HTML5, which became a W3C Recommendation in 2014.
+•	Use For:
+•	Session Storage: Ideal for storing data that should only be available during the session. Data is retained as long as the browser is open.
+•	Page Session Data: Useful for storing temporary data specific to a particular page.
+•	Characteristics:
+•	Size Limit: Larger than cookies (usually around 5 MB per domain).
+•	Expiration: Persists for the duration of the page session.
+•	Tab-Specific: Data is limited to the tab or window where it was set.
+
+localStorage:
+•	Creation Year: Also introduced with HTML5, becoming a W3C Recommendation in 2014.
+•	Use For:
+•	Persistent Storage: Suitable for data that should persist across sessions.
+•	Caching: Can be used to cache data for offline use.
+•	User Preferences: Ideal for storing user preferences and settings.
+•	Characteristics:
+•	Size Limit: Larger than cookies (usually around 5 MB per domain).
+•	Expiration: Persistent, unless explicitly cleared by the user or programmatically.
+•	Domain-Specific: Data is accessible across all windows or tabs from the same origin.
+
+Considerations:
+•	Security:
+•	Cookies: Prone to security risks such as cross-site scripting (XSS) and cross-site request forgery (CSRF). Sensitive information should be encrypted.
+•	sessionStorage and localStorage: Generally more secure as they are not automatically sent with every HTTP request.
+•	Access:
+•	Cookies: Accessible on the server side.
+•	sessionStorage and localStorage: Accessible only on the client side (JavaScript).
+•	Use Cases:
+•	Cookies: Often used for authentication and tracking.
+•	sessionStorage: Suitable for storing temporary data during a user's session.
+•	localStorage: Ideal for persistently storing non-sensitive data.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+EX : 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hi</h1>
+</body>
+<script>
+    console.log('hi');
+    localStorage.setItem('itemId',10)
+    localStorage.setItem('id','113212312')
+    localStorage.setItem('id','newValue')
+    
+    // localStorage.getItem('itemId');
+    // localStorage.removeItem('itemId')
+    // localStorage.clear();
+    
+    console.log(localStorage.key(0)); //==> itemId
+    console.log(localStorage.getItem('itemId').length); //==> 2
+    console.log(localStorage.key(0).length); // get length for "itemId" ==> 6
+
+    // sessionStorage ==> like LocalStorage 
+    sessionStorage.setItem('itemId',10)
+    sessionStorage.setItem('id','113212312')
+
+    document.cookie = 'sessionId=vopazbeqizwvhs4kxfeiic4b,Path=/; HttpOnly; Expires=Thu,'+ new Date(2023,1,1).toUTCString() + ';Secret'
+
+    document.cookie = 'ssada=test'    
+
+    //sessionId=vopazbeqizwvhs4kxfeiic4b; Path=/; HttpOnly; Expires=Thu, 18 Jul 2024 11:30:36 GMT;Secret   
+
+    </script>
+</html>
+
