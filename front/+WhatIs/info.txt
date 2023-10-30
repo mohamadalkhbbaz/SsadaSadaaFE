@@ -1,0 +1,16 @@
+Gooo Pro
+UseContext - ContxtApi
+hook مهمه جداا
+فيها شغل مرتب 
+نستخدمه من اجل تخزين قيم نستخدمها في اكثر من مكون بدل من ارسال القيم من مكون ل مكون ل مكون 
+useContext is a React Hook that lets you read and subscribe to context from your component.
+
+
+ex: 
+import { useContext } from 'react';
+
+function MyComponent() {
+  const theme = useContext(ThemeContext);
+  // ...
+
+  
