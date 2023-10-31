@@ -1,1 +1,12 @@
-Go PRo
+Fetching Data form api 
+جلب الداتا 
+
+fetch is build in js
+axios 
+
+>>>>>>>>>
+JSON.placeholder >> fake api to test
+
+
+state is not function =>>
+هذا الاكسبشن يعني انو القيمة ل عم تسندها ل الستيت مو ارييه 
