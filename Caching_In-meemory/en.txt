@@ -1,0 +1,35 @@
+Balance 
+Borrower  
+Audit Line  
+Safety point  
+Transaction Transh 
+tone 
+overstocking  
+Stockouts 
+Situations  
+to avoid overstocking situations 
+regularly
+ clinic management system
+Infrastructure
+Bin	
+Shelf 	
+Row	row 
+Asile 
+Hierarchy تسلسل
+
+the location's ancestors. اسلاف
+
+hierarchy
+
+-------
+
+
+Consumable 
+Spare Part 
+segmenting 
+Remarks
+
+
+
+
+

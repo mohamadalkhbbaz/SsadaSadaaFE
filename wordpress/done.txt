@@ -1,0 +1,19 @@
+ 
+
+- Arabic Font to be changed. (This includes headings and body text)  *
+- The header and footer to be changed from Left to Right.   *
+- The Main Cover Image to be flipped in the Arabic Translation.  *
+- The trademark signature at the end of the website to be translated when switched to Arabic. ?
+- Most of the images and text need to be aligned accordingly.  ?
+- Translate the text inside the contact forms.   * 
+- In "Transtek's Recent Journal" the title is flipped and not aligned. (This is from the translation plugin). ? 
+
+
+.vc_custom_1678783442054 {
+    background-image: url(https://transtek.com/wp-content/uploads/2022/09/Blue-Modern-Business-Strategy-Blog-Banner-6.jpg?id=1352) !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+
+
+    

@@ -1,0 +1,17 @@
+
+--EF Core "entity framework"
+dotnet add package 
+dotnet add package Microsoft.EntityFrameworkCore --version 6.0.12
+dotnet add package Microsoft.EntityFrameworkCore.Design --version 6.0.12
+dotnet add package Microsoft.EntityFrameworkCore.Tools --version 6.0.12
+--DB
+dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL --version 3.1.18
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 6.0.12
+--validation and mapper
+dotnet add package FluentValidation.DependencyInjectionExtensions --version 11.5.1
+dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection --version 12.0.0
+--Permission
+dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 3.1.20
+dotnet add package Microsoft.IdentityModel.Tokens --version 6.14.1
+dotnet add package System.IdentityModel.Tokens.Jwt --version 6.14.1
+

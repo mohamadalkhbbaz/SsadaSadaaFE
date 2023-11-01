@@ -1,0 +1,36 @@
+  [ApiController]
+    [Route("[controller]")]
+    public class WeatherForecastController : ControllerBase
+    {
+        private readonly HttpWebResponse user;
+        private static readonly string[] Summaries = new[]
+        {
+        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+    };
+
+        private readonly ILogger<WeatherForecastController> _logger;
+
+        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        {
+            _logger = logger;
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://accounts.transtek.com:2053/api/SouadUser/UserInfoById/2");
+            httpWebRequest.Headers.Add("authorization:" + "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJoZXJvQGdtYWlsLmNvbSIsIlVzZXJJZCI6IjEiLCJVc2VyRW1haWwiOiJoZXJvQGdtYWlsLmNvbSIsIlRlbmFudElkIjoiMiIsImp0aSI6Ijk3NzY4N2NkLTEzZTktNDhhZi04YzBjLTZjNTg2Mjc2NGFlZCIsImlhdCI6MTY4MjQwOTIxNiwibmJmIjoxNjgyNDA5MjE2LCJleHAiOjE2ODI4NDEyMTYsImlzcyI6ImJhY2tib25lLXdlYi1jbGllbnQiLCJhdWQiOiJiYWNrYm9uZS1hcGkifQ.Zj0ZNlkrDF1gQHD_ydDsxuMz0d-4gPrG0-5bwYMiLBE");
+
+            ////pass basic authentication credentials
+            //httpWebRequest.Credentials = new NetworkCredential("myuserid", "myid");
+
+            httpWebRequest.Method = "GET";
+
+            user = (HttpWebResponse)httpWebRequest.GetResponse();
+            var streamReader = new StreamReader(user.GetResponseStream());
+            var json = streamReader.ReadToEnd();
+            var splashInfo = JsonConvert.DeserializeObject<Record>(json);
+        }
+ 
+        public class Record 
+        {
+            public string username { get; set; }
+            public string email { get; set; }
+            public DateTime expiryDate { get; set; }
+            public bool isAdmin { get; set; }
+    }

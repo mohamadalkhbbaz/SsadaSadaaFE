@@ -1,0 +1,9 @@
+          //serials.RemoveAll(x => x.transactionType == TransactionType.TransferIn || x.transactionType == TransactionType.TransferOut);
+
+                //var consideredSerialsCount = serials.Where(x => ((x.transactionType == TransactionType.TransactionIn ) // receive transaction doesn't matter posted or not
+                //                                              || (x.transactionType == TransactionType.TransactionOut && x.TransactionLine.Transaction.IsPosted) // issue transaction
+                //                                            ))
+                //                                    .Count();
+
+                  if (serials.Count() % 2 != 0)
+                    throw new Exception("SERIAL_ALREADY_IN_USE" + " " + serials[0].SerialNumber);

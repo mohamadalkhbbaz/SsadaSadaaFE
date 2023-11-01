@@ -1,0 +1,2 @@
+            reservedQuantity = unpostedIssues.SelectMany(x => x.TransactionLines).Where(x => x.OutLocationID == locationID && x.ItemID == itemID).Select(x => x.Quantity).Sum();
+ 

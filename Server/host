@@ -1,0 +1,32 @@
+Host: 149.56.12.142
+Port: 5315
+Username: postgres
+password: t00r
+
+email: hero@gmail.com
+password: 1234
+
+ "Default": {
+        "DbConfiguration": {
+            "DbHost": "149.56.12.142",
+            "DbInstance": "",
+            "DbName": "Inventory",
+            "DbPort": "5315",
+            "MetaDbHost": "149.56.12.142",
+            "MetaDbPort": "5315",
+            "MetaDbInstance": "",
+            "MetaDbName": "Inventory",
+            "MetaSchemaName": "meta",
+            "HangfireDbName": "postgres",
+            "HangfireSchemaName": "hangfire",
+            "MetaSchemaUserName": "postgres",
+            "MetaSchemaPassword": "t00r",
+            "UseDBPortsInConnectionStrings": "true"
+
+        }
+    }
+  
+  Inventory
+  https://accounts.transtek.com:2087
+  UCM
+  https://accounts.transtek.com:2053 

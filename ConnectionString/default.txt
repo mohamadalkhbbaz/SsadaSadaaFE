@@ -1,0 +1,42 @@
+
+"Default": {
+    "DbConfiguration": {
+      "DbHost": "149.56.12.142",
+      "DbInstance": "",
+      "DbName": "Inventory",
+      "DbPort": "5315",
+      "MetaDbHost": "149.56.12.142",
+      "MetaDbPort": "5315",
+      "MetaDbInstance": "",
+      "MetaDbName": "Inventory",
+      "MetaSchemaName": "meta",
+      "HangfireDbName": "postgres",
+      "HangfireSchemaName": "hangfire",
+      "MetaSchemaUserName": "postgres",
+      "MetaSchemaPassword": "t00r",
+      "UseDBPortsInConnectionStrings": "true"
+
+    }
+  }
+
+
+
+  "Default": {
+    "DbConfiguration": {
+        "DbHost": "localhost",
+        "DbInstance": "",
+        "DbName": "Inventory",
+        "DbPort": "5432",
+        "MetaDbHost": "localhost",
+        "MetaDbPort": "5432",
+        "MetaDbInstance": "",
+        "MetaDbName": "Inventory",
+        "MetaSchemaName": "meta",
+        "HangfireDbName": "postgres",
+        "HangfireSchemaName": "hangfire",
+        "MetaSchemaUserName": "postgres",
+        "MetaSchemaPassword": "t00r",
+        "UseDBPortsInConnectionStrings": "true"
+
+    }
+}

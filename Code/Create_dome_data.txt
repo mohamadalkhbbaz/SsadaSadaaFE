@@ -1,0 +1,231 @@
+  //var listBranchs = new List<MS_BRANCHS>();
+  //for (int i = 4; i < 100; i++)
+  //{
+  //    var branch = new MS_BRANCHS()
+  //    {
+  //        BRANCH_CIN = "001",
+  //        AU_INS_DATE = DateTime.Now,
+  //        BR_CO = "1",
+  //        BR_CITY = "0001",
+  //        AU_INS_USER = "0",
+  //        DELETED = 0,
+
+  //        CODE = (int.Parse("0001") + i).ToString("D4"),
+  //        DESCRIPTION = "dubai_branch_" + i,
+  //        DESCRIPTION_AR = "دبي برانش _" + i,
+
+  //    };
+  //    listBranchs.Add(branch);
+  //}
+  //_model.MS_BRANCHS.AddRange(listBranchs);
+  //_model.SaveChanges();
+
+------------------------------------
+  //var listLocartions = new List<FIN_FA_LOCATION>();
+  //for (int i =3; i < 100; i++)
+  //{
+  //    var location = new FIN_FA_LOCATION()
+  //    {
+  //        LOC_CIN = "001",
+  //        AU_INS_DATE = DateTime.Now,
+  //        AU_INS_USER = "0",
+  //        DELETED = 0,
+  //        LOC_BRANCH = (int.Parse("0001") + i).ToString("D4"),
+
+  //        LOC_CODE = (int.Parse("000001") + i).ToString("D6"),
+  //        LOC_DESC = "d-b1-loc_" + i,
+  //        LOC_DESC_AR = "دبي موقع _" + i,
+  //    };
+  //    listLocartions.Add(location);
+  //}
+  //_model.FIN_FA_LOCATION.AddRange(listLocartions);
+  //_model.SaveChanges();
+
+
+--------------------------------------------------------------------------------------------------------------
+
+
+   var listCategories = new List<FIN_FA_TYPE>();
+   for (int i = 3; i < 100; i++)
+   {
+       int numericPart = int.Parse("cat-001".Substring(4)) + i;
+       string newCode = $"cat-{numericPart:D3}";
+
+       var category = new FIN_FA_TYPE()
+       {
+           TYPE_CIN = "001",
+           AU_INS_DATE = DateTime.Now,
+           AU_INS_USER = "0",
+           DELETED = 0,
+           TYPE_OWN_LEASE = "2",
+
+           TYPE_CODE = newCode,
+           TYPE_DESC = "lap_" + i,
+           TYPE_DESC_AR = "لاب _" + i,
+       };
+       listCategories.Add(category);
+   }
+   _model.FIN_FA_TYPE.AddRange(listCategories);
+   _model.SaveChanges();
+
+------------------------------------
+   var listSubCategories = new List<FIN_FA_CATEGORY>();
+for (int i = 2; i < 100; i++)
+{
+    int numericPart = int.Parse("sub-cat-001".Substring(9)) + i;
+    string newCode = $"sub-cat-{numericPart:D3}";
+
+    int numericPartForType = int.Parse("cat-001".Substring(4)) + i;
+    string newCodeForType = $"cat-{numericPart:D3}";
+
+
+    var subCategory = new FIN_FA_CATEGORY()
+    {
+        CAT_CIN = "001",
+        AU_INS_DATE = DateTime.Now,
+        AU_INS_USER = "0",
+        DELETED = 0,
+        CAT_TYP = newCodeForType,
+
+        CAT_CODE = newCode,
+        CAT_DESC = "HR_" + i,
+        CAT_DESC_AR = "اتش بي _" + i,
+    };
+    listSubCategories.Add(subCategory);
+}
+_model.FIN_FA_CATEGORY.AddRange(listSubCategories);
+_model.SaveChanges();
+
+
+
+------------------------------------
+
+            var listGroups = new List<FIN_FA_GROUP>();
+            for (int i = 2; i < 100; i++)
+            {
+                int numericPartForCat = int.Parse("sub-cat-001".Substring(9)) + i;
+                string newCodeForCat = $"sub-cat-{numericPartForCat:D3}";
+
+                int numericPart = int.Parse("grp-001".Substring(4)) + i;
+                string newCode = $"grp-{numericPart:D3}";
+
+                var groups = new FIN_FA_GROUP()
+                {
+                    GRP_CIN = "001",
+                    AU_INS_DATE = DateTime.Now,
+                    AU_INS_USER = "0",
+                    DELETED = 0,
+                    GRP_CAT = newCodeForCat,
+
+                    GRP_CODE = newCode,
+                    GRP_DESC = "book_" + i,
+                    GRP_DESC_AR = "كتاب _" + i,
+                };
+                listGroups.Add(groups);
+            }
+            _model.FIN_FA_GROUP.AddRange(listGroups);
+            _model.SaveChanges();
+
+
+
+--------------------------------------------------------------------------------------------------------------
+
+
+   var listAssets = new List<FIN_FA_DEFINITION>();
+   for (int i = 3; i < 80; i++)
+   {
+       int numericPart = int.Parse("asset-001".Substring(6)) + (i + 3600);
+       string newCode = $"asset-{numericPart:D3}";
+
+       int numericPartForCat = int.Parse("sub-cat-001".Substring(9)) + i;
+       string newCodeForCat = $"sub-cat-{numericPartForCat:D3}";
+
+       int numericPartForGrp = int.Parse("grp-001".Substring(4)) + i;
+       string newCodeForGrp = $"grp-{numericPartForGrp:D3}";
+
+       int numericPartForType = int.Parse("cat-001".Substring(4)) + i;
+       string newCodeForType = $"cat-{numericPartForType:D3}";
+
+
+
+       var asset = new FIN_FA_DEFINITION()
+       {
+           DEF_CIN = "001",
+           AU_INS_DATE = DateTime.Now,
+           AU_INS_USER = "0",
+           DELETED = 0,
+           DEF_STATUS = "A",
+           DEF_DEPRECATION_TYPE = "P",
+           DEF_PAY_METHOD = "C",
+           DEF_QUANTITY = 1,
+
+           DEF_TYPE = newCodeForType,
+           DEF_CATEGORY = newCodeForCat,
+           DEF_GROUP = newCodeForGrp,
+
+           DEF_CUST_BRANCH = (int.Parse("0012") + i).ToString("D4"),
+           DEF_LOCATION = (int.Parse("000012") + i).ToString("D6"),
+           DEF_WRK_CNT = (int.Parse("0000012") + i).ToString("D7"),
+
+
+           DEF_ASSET_ID = newCode,
+           DEF_TAG_ID = newCode,
+           DEF_DESC = "book_" + i,
+           DEF_DESC_AR = "كتاب _" + i,
+       };
+       listAssets.Add(asset);
+   }
+   _model.FIN_FA_DEFINITION.AddRange(listAssets);
+   _model.SaveChanges();
+
+
+
+
+
+
+
+
+
+
+
+
+   --------------------------
+
+   
+
+
+            var listAssets = new List<FIN_FA_DEFINITION>();
+            for (int i = 981; i < 20000; i++)
+            {
+                int numericPart = int.Parse("asset-001".Substring(6)) + (i + 3600);
+                string newCode = $"asset-{numericPart:D3}";
+
+                var asset = new FIN_FA_DEFINITION()
+                {
+                    DEF_CIN = "001",
+                    AU_INS_DATE = DateTime.Now,
+                    AU_INS_USER = "0",
+                    DELETED = 0,
+                    DEF_STATUS = "A",
+                    DEF_DEPRECATION_TYPE = "P",
+                    DEF_PAY_METHOD = "C",
+                    DEF_QUANTITY = 1,
+
+                    DEF_TYPE = "cat-001",
+                    DEF_CATEGORY = "cat-002",
+                    DEF_GROUP = "cat-005",
+
+                    DEF_CUST_BRANCH = "00001",
+                    DEF_LOCATION = "000001",
+                    DEF_WRK_CNT = "0000001",
+
+
+                    DEF_ASSET_ID = newCode,
+                    DEF_TAG_ID = newCode,
+                    DEF_DESC = "book_" + i,
+                    DEF_DESC_AR = "كتاب _" + i,
+                };
+                listAssets.Add(asset);
+            }
+            _model.FIN_FA_DEFINITION.AddRange(listAssets);
+            _model.SaveChanges();

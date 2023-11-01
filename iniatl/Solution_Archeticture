@@ -1,0 +1,61 @@
+Application 
+Core 
+Infrastructure
+Web
+
+
+Librabies : 
+1> Application 
+AutoMapper
+EPPlus 
+FirebaseAdmin
+HangFire
+IdentityServer4.AspNetIdentity
+itext7
+LinqKit
+Swashbuckle
+System.DirectoryServices
+AWSSDK.Core ? 
+
+---------------
+
+2> Core
+AutoMapper
+Identity  ??
+Newtonsoft.Json
+Authentication.JwtBearer
+IdentityModel.Tokens.Jwt
+
+
+---------------
+
+3> Infrastructure 
+EntityFrameworkCore.PostgreSQL
+EntityFrameworkCore.SqlServer
+EntityFrameworkCore.InMemory
+LINQKit.Core
+
+---------------
+
+4> Web
+HangFire
+Hangfire.MemoryStorag
+Hangfire.PostgreSql
+Microsoft.AspNetCore.SpaServices ??
+
+---------------
+
+EPPlus - Excel spreadsheets for .NET
+Itext7 - Generating a PDF Document
+HangFire - Hangfire – Background jobs and workers for .NET and .NET Core
+IdentityServer4.AspNetIdentity ؟؟
+----------------------
+Newtonsoft.json -  Popular high-performance JSON framework for .NET
+
+
+
+
+
+
+
+

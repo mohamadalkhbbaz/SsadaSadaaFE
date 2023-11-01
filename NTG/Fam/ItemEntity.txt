@@ -1,0 +1,18 @@
+
+Entity :
+1_ DEFINITION >> Asset
+    DEF_ASSET_ID ===> ID
+    DEF_TAG_ID ===> BarCode
+    DEF_STATUS
+
+    DEF_CUST_BRANCH  
+    DEF_LOCATION  
+    DEF_WRK_CNT 
+    DEF_TYPE  
+    DEF_CATEGORY 
+    DEF_GROUP      
+    DEF_TAG_ID
+
+    DEF_ISPICKED
+a
+2_ 

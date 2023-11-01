@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic&family=Noto+Kufi+Arabic:wght@300&family=Noto+Sans+Arabic&display=swap');
+
+
+html[dir="rtl"] * {
+font-family: 'IBM Plex Sans Arabic'!important;
+font-size: 16px !important;
+}
+
+html[dir="rtl"] .logo  {
+ float: right !important;
+}
+
+html[dir="rtl"] .mega-menu-item-206  {
+ float: left !important;
+}
+
+html[dir="rtl"] .mega-menu-item-583  {
+ float: left !important;
+}
+
+
+html[dir="rtl"] .vc_custom_1678783442054{
+     background-image: url(https://transtek.com/wp-content/uploads/2023/04/Blue-Modern-Business-Strategy-Blog-Banner-6-ar.jpg) !important;
+}
+
+
+
+.entry-date{
+display:none !important;
+}
+@media screen and (max-width: 600px) {
+
+#slide-image{
+width:130%;
+margin-left:-20% !important;
+}
+.content{
+padding-top:0px !Important;
+}
+#mega-menu-item-592 {
+display:none !important;
+}
+#mega-menu-wrap-stm-primary .mega-menu-toggle {
+    background: #140958;
+}
+.header-mobile__nav-control {
+    display: none !important;
+}
+.vc_row-fluid {
+    padding-left: 3% !important;
+    padding-right: 3% !important;
+}
+
+#carousel-desktop {
+display:none !important
+}
+
+html[dir="rtl"] body {
+font-size: 18px;
+}
+
+html[dir="rtl"] .stm-separator {
+  margin-bottom: 40px !important;
+}
+
+div#nav_menu-3{
+display : none !important;
+}
+}
+
+html[dir="rtl"] .header_view-style_1 .stm-nav__menu_type_header > .menu-item > a {
+    font-size: 18px !important;
+}
+html[dir="rtl"] .form-control {
+    text-align: right;
+}
+
+html[dir="rtl"] .wpcf7-textarea{
+    text-align: right;
+}
+
+html[dir="rtl"] .vc_btn3-left {
+    text-align: right;
+}
+
+html[dir="rtl"]  .vc_sep_pos_align_left {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+html[dir="rtl"]  .menu > li > a:before{
+content :"" !important;
+} 
+
+html[dir="rtl"] ul#menu-footer {
+    text-align: right;
+    padding-right: 0;
+}
+.vc_images_carousel  {
+    direction: ltr !important;
+}
+
+@media only screen and (min-width: 1700px) {
+.container {
+    width: 90% !important;
+}

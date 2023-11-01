@@ -1,0 +1,4 @@
+       transfers = transfers.Where(x => x.Remarks != null && x.Remarks.ToUpper().Contains(text.ToUpper()) || 
+                                                    x.TransferNumber != null && x.TransferNumber.ToString().Equals(text) || 
+                                                    x.Date != null && x.Date.ToString("yyyy'-'MM'-'dd").Equals(text) || 
+                                                    x.InventoryLocation != null && _mapper.Map<InventoryLocation>( x.InventoryLocation).Description.ToUpper().Contains(text.ToUpper())).ToList();

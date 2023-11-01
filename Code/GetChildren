@@ -1,0 +1,179 @@
+public async Task<List<CategoryDtoGetAllChild>> GetAllCategoryAndSubCategory()
+        {
+            var entities = await Repository.GetAllIncluding(x => x.Translations).ToListAsync();
+
+            List<CategoryDtoGetAllChild> entitiesDto = new List<CategoryDtoGetAllChild>();
+            entitiesDto = entities.Where(c => c.BaseCategoryId == null)
+                                  .Select(c => new CategoryDtoGetAllChild()
+                                  {
+                                      Value = c.Id,
+                                      Title = c.Translation.Name,
+                                      Children = GetChildren(entities, c.Id)
+                                  })
+                                  .ToList();
+            return entitiesDto;
+        }
+
+        public static List<CategoryDtoGetAllChild> GetChildren(List<Category> entities, long parentId)
+        {
+            return entities.Where(c => c.BaseCategoryId == parentId)
+                             .Select(c => new CategoryDtoGetAllChild
+                             {
+                                 Value = c.Id,
+                                 Title = c.Translation.Name ,
+                                 Children = GetChildren(entities, c.Id)
+                             })
+                             .ToList();
+        }
+
+recursive approach
+
+public async Task<List<int>> GetAllLocationChildrenIds(int locationId)
+{
+    var childrenIds = new List<int>();
+    var location = await _locationRepository.getLocationByIdAsync(locationId);
+    if (location != null)
+    {
+        childrenIds.Add(location.Id);
+        foreach (var child in location.LocationChildren)
+        {
+            childrenIds.AddRange(await GetAllLocationChildrenIds(child.Id));
+        }
+    }
+    return childrenIds;
+}
+
+
+
+var locations = await _locationRepository.getAllLocationListAsync();
+var allChildren = new List<int>();
+foreach (var location in locations)
+{
+    allChildren.AddRange(await GetAllLocationChildrenIds(location.Id));
+}
+
+
+public async Task<List<int>> GetAllLeafLocationIds(int locationId)
+{
+    var leafIds = new List<int>();
+    var location = await _locationRepository.getLocationByIdAsync(locationId);
+    if (location != null)
+    {
+        if (location.LocationChildren.Count == 0)
+        {
+            leafIds.Add(location.Id);
+        }
+        else
+        {
+            foreach (var child in location.LocationChildren)
+            {
+                leafIds.AddRange(await GetAllLeafLocationIds(child.Id));
+            }
+        }
+    }
+    return leafIds;
+}
+var locations = await _locationRepository.getAllLocationListAsync();
+var allLeafIds = new List<int>();
+foreach (var location in locations)
+{
+    allLeafIds.AddRange(await GetAllLeafLocationIds(location.Id));
+}
+
+
+        ///////////locations 
+
+          //Get All Children 
+            var selectedLocationIds = new HashSet<int>();
+            AllLocations.Where(x => result.Locations.Contains(x.Id)).ToList()
+                                                    .ForEach(x => GetAllChildrenByLocationID(x.Id, selectedLocationIds));
+            LocationTree = selectedLocationIds.ToHashSet();
+            return result;
+        }
+
+        /// <summary>
+        /// Gets the Children For Location Id .
+        /// </summary>
+        /// <param name="selectedLocationIds"></param>
+        /// <param name="locationId"></param>
+        /// <returns></returns>
+        private void GetAllChildrenByLocationID(int locationId, HashSet<int> selectedLocationIds)
+        {
+            var location = AllLocations.FirstOrDefault(location => location.Id == locationId);
+            selectedLocationIds.Add(location.Id);
+            location.LocationChildren?.ToList().ForEach(child => GetAllChildrenByLocationID(child.Id, selectedLocationIds));
+        }
+
+
+
+        ///////////////////////////////// 
+
+           var Children = allLocations.Result.Where(x => x.ParentID == LocationID).ToList();
+                var childrenIDs = Children.Select(x => x.Id).ToList();
+                storageAreas.AddRange(Children.Where(x => x.IsStorageArea).Select(x => x.Id).ToList());
+                while (childrenIDs.Count != 0)
+                {
+                    Children = allLocations.Result.Where(x => childrenIDs.Contains(x.ParentID ?? 0)).ToList();
+                    childrenIDs = Children.Select(x => x.Id).ToList();
+                    storageAreas.AddRange(Children.Where(x => x.IsStorageArea).Select(x => x.Id).ToList());
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                // Search Children 
+
+                    public async Task<IEnumerable<LocationLiteModel>> getFilteredLocationList(string searchString)
+        {
+            var locations = await _locationRepository.getAllLocationListAsync();
+            locations = locations.Where(x => x.ParentID == null || x.ParentID == 0).ToList();
+            var locs = _mapper.Map<IEnumerable<LocationLiteModel>>(locations).ToList();
+            var filterdLocations = new List<LocationLiteModel>();
+            foreach (var item in locs)
+            {
+                var test = SearchInLocations(item, searchString);
+                if (test != null)
+                    filterdLocations.Add(test);
+            }
+            return filterdLocations;
+        }
+
+        public LocationLiteModel SearchInLocations(LocationLiteModel locationModel, string searchString)
+        {
+            if (locationModel != null)
+            {
+                var locationFilterd = (!string.IsNullOrEmpty(locationModel.Barcode) && locationModel.Barcode.Contains(searchString))
+                 || locationModel.Description.ToLower().Contains(searchString.ToLower());
+                if (locationFilterd)
+                    return locationModel;
+                else
+                {
+                    var result = new LocationLiteModel(locationModel);
+                    result.LocationChildren = new List<LocationLiteModel>();
+                    foreach (var item in locationModel.LocationChildren)
+                    {
+                        var test = SearchInLocations(item, searchString);
+                        if (test != null)
+                            result.LocationChildren.Add(test);
+                    }
+                    if (result.LocationChildren.Count == 0)
+                        return null;
+                    else
+                        return result;
+                }
+            }
+            return null;
+        }

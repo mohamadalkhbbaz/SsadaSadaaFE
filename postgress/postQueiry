@@ -1,0 +1,9 @@
+SELECT * FROM "mhd115@gmail_comSchema_202306061341418622"."Item"ORDER BY "Id" DESC LIMIT 2
+SELECT * FROM "mhd115@gmail_comSchema_202306061341418622"."ItemBalance"ORDER BY "Id" DESC LIMIT 2
+SELECT * FROM "mhd115@gmail_comSchema_202306061341418622"."ItemBalanceHistory"ORDER BY "Id" DESC LIMIT 10
+SELECT * FROM "mhd115@gmail_comSchema_202306061341418622"."Transaction"ORDER BY "Id" DESC LIMIT 10
+SELECT * FROM "mhd115@gmail_comSchema_202306061341418622"."TransactionLine"ORDER BY "Id" DESC LIMIT 20
+SELECT * FROM "mhd115@gmail_comSchema_202306061341418622"."TransactionLineSerial"ORDER BY "Id" DESC LIMIT 20
+SELECT * from "mhd115@gmail_comSchema_202306061341418622"."BalanceByInvoice" 
+SELECT * from "mhd115@gmail_comSchema_202306061341418622"."BalanceByCustody" 
+SELECT * from "mhd115@gmail_comSchema_202306061341418622"."BalanceByCustodySerial" 

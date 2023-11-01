@@ -1,0 +1,44 @@
+   _itemBalanceService.GetItemAverageCost(line.ItemID, line.OutLocationID.Value, line.LotNumber);
+
+        public async Task<List<BorrowerItemsModel>> GetItemForBorrowerByID(int borroweID)
+        {
+            var borroweItemsModels = new List<BorrowerItemsModel>();
+            IEnumerable<Transaction> transactions;
+            transactions = await _borrowerTransactionRepository.GetTransactionByBorroweIdAndBePost(borroweID);
+
+
+            transactions.ToList().ForEach(transaction =>
+            {
+                var borroweItemsModel = new BorrowerItemsModel() { BorroweID = transaction.BorrowerID.GetValueOrDefault(), BorroweName = transaction.Borrower.FirstName, Type = transaction.Type };
+
+                transaction.TransactionLines.ForEach(line =>
+                {
+                    var item = new BorroweItem() { ItemID = line.ItemID, Quantity = line.StockUomQuantity };
+                    // if found serials for item
+                    line.TransactionLineSerials?.ForEach(serial =>
+                        item.Serials?.Add(new BorroweSerial() { SerialNumber = serial.SerialNumber }));
+                        
+                    borroweItemsModel.Items.Add(item);
+                });
+                borroweItemsModels.Add(borroweItemsModel);
+            });
+
+            var modelsIn = borroweItemsModels.Where(x => x.Type == TransactionType.BorrowIn.ToString()).ToList();
+            var modelsOut = borroweItemsModels.Where(x => x.Type == TransactionType.BorrowReturnOut.ToString()).ToList();
+            foreach (var modelOut in modelsOut)
+            {
+                modelsIn.Where(x => x.BorroweID == modelOut.BorroweID).ToList().ForEach(x =>
+                {
+                    x.Items.ForEach(i =>
+                    {
+                        var item = modelOut.Items.FirstOrDefault(o => o.ItemID == i.ItemID);
+                        if (i.Serials == null)
+                            i.Quantity -= item.Quantity;
+                        var exceptSerials = i.Serials.Select(d => d.SerialNumber).Except(item.Serials.Select(s => s.SerialNumber)).ToList();
+                        i.Serials = i.Serials.Where(x => exceptSerials.Contains(x.SerialNumber)).ToList();
+                    });
+                });
+            };
+
+            return modelsIn;
+        }

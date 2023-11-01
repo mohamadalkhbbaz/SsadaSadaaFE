@@ -1,0 +1,46 @@
+MobX :
+
+Philosophy:
+    MobX follows a more "reactive" programming paradigm. نموذج
+ It allows you to define observable state and automatically tracks dependencies.
+ => When data changes, components that depend on that data are automatically updated.
+MobX follows a more "reactive" programming paradigm 
+
+Ease of Use:
+MobX is often considered more straightforward and requires less boilerplate code compared to Redux. It is designed to be simpler and more intuitive.
+
+Mutability:
+MobX embraces mutability. You can often modify the state directly, and MobX will take care of updating the relevant components.
+
+Code Structure:
+MobX typically requires less boilerplate code, and the code structure is often more straightforward compared to Redux.
+
+Learning Curve:
+The learning curve for MobX is generally perceived to be lower, making it easier for developers to get started quickly.
+
+Redux:
+Philosophy:
+
+Redux follows a more functional programming paradigm. It enforces a unidirectional data flow and immutability principles. Actions are dispatched to modify the state in a predictable way.
+Predictability:
+
+Redux's strict architecture and one-way data flow make it highly predictable. This predictability can be beneficial for debugging and maintaining large applications.
+DevTools:
+
+Redux has excellent developer tools, such as the Redux DevTools extension, which can be extremely helpful for debugging and inspecting the application state over time.
+Middleware:
+
+Redux provides a middleware mechanism, allowing developers to intercept and modify actions before they reach the reducer. This is powerful for handling asynchronous operations.
+Community and Ecosystem:
+
+Redux has a large and mature ecosystem with a variety of middleware, tools, and extensions. It is widely adopted and has strong community support.
+Considerations:
+Application Size:
+
+MobX is often seen as more suitable for smaller to medium-sized applications, while Redux is often recommended for larger applications due to its predictability and strict structure.
+Developer Preference:
+
+The choice between MobX and Redux can also come down to personal preference. Some developers may prefer the simplicity and reactivity of MobX, while others may appreciate the structure and predictability of Redux.
+Integration with React:
+
+Both MobX and Redux integrate well with React. React-Redux is commonly used with Redux, while MobX provides its set of React-specific bindings.

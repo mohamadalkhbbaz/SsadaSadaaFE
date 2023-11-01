@@ -1,0 +1,4 @@
+ private async Task<bool> IsCarUnique(CreateCarDto createCarDto)
+        {
+            return !await _rpository.AnyAsync(x => x.CityId == createCarDto.CityId && createCarDto.Number == x.Number);
+        }

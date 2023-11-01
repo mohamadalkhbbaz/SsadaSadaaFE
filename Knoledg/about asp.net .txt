@@ -1,0 +1,128 @@
+Basic Concepts:
+
+What is ASP.NET Core, and how does it different from ASP.NET Framework?
+Explain the MVC (Model - View - Controller ) architectural pattern in ASP.NET Core.
+Project Setup:
+
+How do you create a new ASP.NET Core project?
+Describe the structure of an ASP.NET Core project.
+Routing:
+
+How do you configure routing in ASP.NET Core?
+What is attribute routing, and how is it used?
+Controllers:
+
+What are controllers, and how do they handle HTTP requests?
+Explain the purpose of action methods in controllers.
+Views and Razor Pages:
+
+What are views and razor pages, and how do they relate to controllers?
+How do you pass data from controllers to views?
+Middleware:
+
+What is middleware in ASP.NET Core, and why is it important?
+Give examples of some built-in middleware components.
+Dependency Injection:
+
+Explain the concept of dependency injection in ASP.NET Core.
+How is dependency injection configured in an ASP.NET Core application?
+Authentication and Authorization:
+
+How do you implement authentication and authorization in ASP.NET Core?
+What authentication providers are available in ASP.NET Core?
+
+Entity Framework Core:
+What is Entity Framework Core, and how does it relate to database access in ASP.NET Core?
+Explain how to define and use models with Entity Framework Core.
+
+API Development:
+How can you create RESTful APIs in ASP.NET Core?
+Describe the use of HTTP verbs like GET, POST, PUT, and DELETE in API development.
+
+Testing:
+What types of testing are commonly performed in ASP.NET Core applications?
+How can you write unit tests for controllers or services in ASP.NET Core?
+
+Deployment and Hosting:
+What options are available for deploying and hosting ASP.NET Core applications?
+Describe the steps to deploy an ASP.NET Core application to a web server.
+
+Performance Optimization:
+What are some techniques for optimizing the performance of ASP.NET Core applications?
+
+Security Best Practices:
+What security considerations should be taken into account when developing ASP.NET Core applications?
+
+Logging and Error Handling:
+How can you implement logging and error handling in ASP.NET Core applications?
+
+Versioning and API Documentation:
+How can you version your APIs in ASP.NET Core, and why is it important?
+How do you generate API documentation for your ASP.NET Core APIs?
+
+Real-world Scenario:
+Given a specific scenario or problem statement, demonstrate how you would design and implement a solution using ASP.NET Core.
+
+Performance Task:
+Optimize the performance of a sample ASP.NET Core application by identifying bottlenecks and applying appropriate optimizations.
+
+
+
+
+---------------------------------------- Answers 
+
+Basic Concepts:
+
+ASP.NET Core is an open-source, cross-platform web framework developed by Microsoft for building modern web applications. It differs from ASP.NET Framework in terms of platform support and features.
+Project Setup:
+
+You can create a new ASP.NET Core project using tools like Visual Studio or the .NET CLI (Command-Line Interface). The project structure typically includes folders for controllers, views, models, and configuration files.
+Routing:
+
+Routing in ASP.NET Core is configured in the Startup.cs file using the UseEndpoints method. You can define routes using attributes on controller actions or by configuring them in the Startup.cs file.
+Controllers:
+
+Controllers are classes that handle incoming HTTP requests. They contain action methods that correspond to different routes and are responsible for processing those requests and returning responses.
+Views and Razor Pages:
+
+Views and Razor Pages are used to generate HTML responses. They are associated with controllers and can receive data from controllers via a model.
+Middleware:
+
+Middleware components in ASP.NET Core are responsible for processing HTTP requests and responses. They are configured in the Startup.cs file and execute in the order they are added.
+
+Dependency Injection:
+Dependency Injection (DI) is a technique for managing dependencies in an application. In ASP.NET Core, you configure DI in the Startup.cs file and use it to inject services into controllers and other components.
+
+Authentication and Authorization:
+Authentication is the process of verifying a user's identity, while authorization determines what actions a user is allowed to perform. ASP.NET Core supports various authentication providers and authorization policies.
+
+Entity Framework Core:
+Entity Framework Core is an Object-Relational Mapping (ORM) framework used for database access in ASP.NET Core. You define models to represent database entities and use EF Core to interact with the database.
+
+API Development:
+To create RESTful APIs in ASP.NET Core, you typically use controllers with actions that return data serialized in JSON format. HTTP verbs like GET, POST, PUT, and DELETE map to CRUD operations.
+
+Testing:
+Unit testing can be performed using testing frameworks like MSTest, xUnit, or NUnit. You write test methods to verify the behavior of your code.
+
+Deployment and Hosting:
+ASP.NET Core applications can be deployed to various platforms, including Windows, Linux, and cloud services like Azure and AWS. Deployment involves packaging the application and configuring the hosting environment.
+
+Performance Optimization:
+Performance optimization techniques include caching, database optimization, minimizing database queries, using asynchronous programming, and optimizing front-end assets.
+
+Security Best Practices:
+Security best practices involve input validation, protecting against SQL injection, using HTTPS, and implementing proper authentication and authorization mechanisms.
+
+Logging and Error Handling:
+You can implement logging using built-in logging providers like Serilog or the .NET Core logging framework. Error handling involves capturing and logging exceptions and returning appropriate error responses to clients.
+
+Versioning and API Documentation:
+API versioning can be achieved using attributes or URL conventions. You can generate API documentation using tools like Swagger or OpenAPI.
+
+Real-world Scenario :
+Design and implement a solution based on the specific scenario or problem statement, considering all the relevant ASP.NET Core concepts and best practices.
+
+Performance Task:
+Optimize the performance of a sample ASP.NET Core application by identifying bottlenecks and applying appropriate optimizations, such as caching, database tuning, or code optimizations.
+Please note that these answers are simplified, and you should explore each topic in more detail through documentation, tutorials, and practical projects to gain a comprehensive understanding of ASP.NET Core development.

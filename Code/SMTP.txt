@@ -1,0 +1,17 @@
+(Simple Mail Transfer Protocol)
+SMTP provides a set of protocol that simplify the communication of email messages between email servers : 
+smtp.gmail.com used with one of two othere protocols (POP3 , IMAP)
+smtp.domain.com" or "mail.domain.com"
+
+
+SMTP Auhentication
+SMTP Authentication, often abbreviated SMTP AUTH, 
+is an extension of the SMTP (Simple Mail Transfer Protocol) whereby an SMTP client may log in using an authentication mechanism chosen among those supported by the SMTP servers.
+
+SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+SmtpServer.Port = 587;
+SmtpServer.Credentials = new System.Net.NetworkCredential("username", "password");
+
+
+
+----------------------------

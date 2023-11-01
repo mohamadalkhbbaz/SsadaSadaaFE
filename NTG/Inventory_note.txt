@@ -1,0 +1,21 @@
+
+ warehous ==> storage area
+
+7_ Check in stocktaking location ==> ?
+
+ 
+2_ create location type
+4_ load select item everyone 
+5_ load select location everyone
+
+ _ delete stocktaking >>? 
+
+ _ when checked location =>
+(There is another warehouse that already checked )>
+
+  Posted in transfer recive 
+transfer recive delete button => 
+
+_ handling method general => fifo
+
+ 

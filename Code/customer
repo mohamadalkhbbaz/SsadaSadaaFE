@@ -1,0 +1,3 @@
+  var ifUsed = _model.ORD_OUT_BOUND_HDR.Any(x => x.CUSTOMER_ADDRESS_ID == old.ID);
+  if (ifUsed)
+      continue;

@@ -1,0 +1,26 @@
+Controller BorroweReturnOut 
+
+1. Add (TransactionAddUpdateModel) 
+        check model // 
+        check items > if the Borrowe has this items   // 
+        add Transaction to db : LabelID : 11  ,       //
+                                Type =  BorroweReturnOut , 
+                                TransactionLineSerials.transactionType = BorroweReturnOut
+2. Update 
+    check model // 
+    check if transaction is posted
+    update transaction
+
+3. Post (int)
+    validate_onPost
+    add transfer to InspactionArea  //
+        edit in item Balance &  add to item balanceHistory ==> To InspactionArea // 
+
+4. Delete 
+    delete transaction
+
+
+
+
+{{host}}:{{port}}/api/Inspection?pageIndex=0&rowsPerPage=10&Type=BorrowReturnOut
+

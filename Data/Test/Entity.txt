@@ -1,0 +1,21 @@
+item
+category
+Location  
+transaction-type
+uom 
+UoMConversion
+Borrow
+BorrowerTransaction
+
+In
+Out
+Transfer 
+
+Master Datra :
+lable 
+type 
+class
+Location  
+
+Accept-Language
+ 

@@ -1,0 +1,14 @@
+Country : ms_country
+city : ms_city
+branch : ms_branch
+location : fin_fa_location
+subLocation : ms_work_center
+
+category : fin_fa_type
+subCategory : fin_fa_category
+group : fin_fa_group
+
+
+assets : fin_fa_defintion  
+
+status : A / R

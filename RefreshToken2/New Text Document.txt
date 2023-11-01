@@ -1,0 +1,25 @@
+1_ First, the client authenticates with the authentication component by providing the credentials
+2_ Then, the authentication component issues the access token
+3_ After that, the client requests the resource endpoint for a protected resource by providing the access token
+4_ The resource endpoint validates the access token and provides a protected resource
+Steps 3 & 4 keep on repeating until the access token expires
+5_ Once the access token expires, the client needs to authenticate with the authentication component once again and the flow repeats from step 1
+
+
+
+Let’s see how we can extend this flow.
+
+Refresh token-based authentication workflow
+Refresh tokens are credentials that can be used to acquire new access tokens. When access tokens expire, we can use refresh tokens to get a new access token from the authentication component. The lifetime of a refresh token is usually set much longer compared to the lifetime of an access token.
+
+Now, we are going to introduce the refresh token to our authentication workflow:
+
+1_ First, the client authenticates with the authentication component by providing the credentials
+2_ Then, the authentication component issues the access token and the refresh token
+3_ After that, the client requests the resource endpoints for a protected resource by providing the access token
+4_ The resource endpoint validates the access token and provides a protected resource
+5_ Steps 3 & 4 keep on repeating until the access token expires
+6_ Once the access token expires, the client requests a new access token by providing the refresh token
+7_ The authentication component issues a new access token and refresh token
+8_ Steps 3 through 7 keep on repeating until the refresh token expires
+9_ Once the refresh token expires, the client needs to authenticate with the authentication server once again and the flow repeats from step 1

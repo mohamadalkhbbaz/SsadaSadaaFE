@@ -1,0 +1,100 @@
+recieve => all items need to check => Inspection Area 
+     note : TransactionStatus => (recieve-confirm)  
+
+Custodies  
+    Add => Post => (Like,OutTransaction)
+      note : TransactionStatus =>(Borrowe)  
+
+    Return => Post => All items to Inspection Area 
+     note : TransactionStatus => (Borrowe-confirm)  , get all items for the user and not returned yet
+        
+
+
+Controller BorroweReturnOut 
+1. Add (TransactionAddUpdateModel) 
+        check model
+        check items > if the Borrowe has this items  
+        add Transaction to db : LabelID : 11  , 
+                                Type =  BorroweReturnOut , 
+                                TransactionLineSerials.transactionType = BorroweReturnOut
+
+
+
+request     
+ note : TransactionStatus => (Check-Item) 
+
+ 
+
+ Inspection Area  
+    1- recieve-confirm
+            1- not recieve => Return to vendor 
+            2- realise => recieve => transfer to selected location  
+
+    2- Borrowe-confirm
+            1- realise 
+            2- dispose
+            3- maintenance 
+
+    3- Check-Item
+            1- realise 
+            2- dispose
+            3- maintenance 
+
+
+
+Custodies  
+      Add / Update => Post (In)
+      note : TransactionType =>(BorroweIn)  
+
+      return => Post (Out)  
+      note : TransactionType =>(BorroweReturnOut)  
+
+
+ When add new Transaction Borrowe by this dto 
+{
+    "Type": "BorroweIn",
+    "LabelID": 11, =>  Borrowe - Borrowe/returned
+    "Date": "2023-05-07 00:00:00",
+    "Remarks": "112",
+    "BorroweIn": 10, => BorroweId
+    "LocationID": 1, => warehouseId
+    "CurrencyId": 1,
+    "totalCount": "10", count lines
+    "TransactionLines": [
+        {
+            "itemID": 22,
+            "OutLocationID": 2, - check location should be a storage area
+            "uoMID": 1,
+            "quantity": 1, 
+            "stockUomQuantity": 1, - check(quantity For this item)
+            "lotNumber": "",  - check for item if apply lot must have value 
+            "serials": [
+                { - check count serial == quantity 
+                    "SERIALNUMBER": "1122" -check(serial must be unique)
+                }
+            ]
+        }
+    ]
+}
+
+
+
+BorrwerReturnOut 
+> Add = header  :
+        1- search to Transaction Number "type BorroweIn"
+        2- Borrowe Select   
+        3- Item Select 
+
+      , lines  : items and quantity / serials
+
+
+1--> get data from Transaction fileters (type => BorroweIn, 
+                               status => post, 
+                               Transaction on locations the user has permissions on it )         
+         
+
+2--> get borrowes from Transaction fileters (has BorroweId , 
+                                        status => post ,
+                                        Transaction on locations the user has permissions on it )
+
+3--> item Select get all item in 

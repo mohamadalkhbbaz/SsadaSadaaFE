@@ -1,0 +1,116 @@
+ item class :
+ Description
+
+ item type : 
+ Description
+
+Item UoM Conversion :
+First Unit Id 
+Secound Unit Id
+Operation
+Factor
+ItemId
+
+Item UoM barcode : 
+Uom Id 
+Item Id 
+Barcode
+
+Item Balance :
+Item Id 
+Location Id 
+Stock UoM Quantity
+Last Stock UoM Cost 
+Average Cost 
+Last Transaction Line Id
+Last Transaction Date
+Last Transfer Line Id
+
+
+Item Balance History : 
+Item Id 
+Location Id 
+Stock UoM Quantity
+Last Stock UoM Cost 
+Average Cost 
+Last Transaction Line Id
+Last Transaction Date
+
+category 
+Description 
+Type Id ??
+Parent Id 
+Handling Method Id
+Costing Method Id 
+Default Uom id 
+item Type Id ??
+Is Last Level 
+Min Value 
+Max Value
+Reorder Level
+Safty poing
+
+
+UoM
+Description
+
+UoM Conversion
+First Unit ID
+Second Unit ID
+Operator
+Factor
+
+
+Location Entity :
+Description
+Type Id 
+Parent Id 
+Is Locked
+Address
+Length
+Width
+Height
+
+location Type
+Description
+Transfer Entity : 
+Label Id
+Location Id
+Date
+Remarks
+Total Cost
+Post Flag
+Post Date
+Type (In / Out)
+Reference Number 
+Transfer Number 
+
+Transfer Line : 
+Transfer Id 
+Item Id 
+Source Id
+Destination Id
+Sent Quantity
+Sent Stock UoM Quantity
+Received Quantity 
+Received Stock UoM Quantity 
+Sent UoM Id 
+Received UoM Id
+Lot Number
+Expiry Date
+Average Cost
+
+
+
+
+Vendor Entity : 
+First Name
+Last Name 
+Email
+Address
+
+
+
+
+
+

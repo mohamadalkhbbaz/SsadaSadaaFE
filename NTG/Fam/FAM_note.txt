@@ -1,0 +1,58 @@
+        { val: 1, des: "Engineering Store Room", country: "KSA", quantity: "50", parentLocation: "Jaddah > Main Building > Floor1" },
+
+
+ outBoundHdrVM.OutBoundDtlVMs.ForEach(line =>
+            {
+                entity.ORD_OUT_BOUND_DTL.Add(new ORD_OUT_BOUND_DTL()
+                {
+                    ORD_OUT_BOUND_HDR_ID = entity.ID,
+                    ASSET_CATEGORY = line.AssetCategory,
+                    ASSET_SUBCATEGORY = line.AssetSubcategory,
+                    ASSET_GROUP = line.AssetGroup,
+                    QUANTITY = line.Quantity,
+                    STORE_LOACATION = line.StoreLoacation,
+                    STORE_SUBLOCATION = line.StoreSublocation,
+                    STORE_BRANCH = line.StoreBranch
+                });
+            });
+
+
+            "customerAddressVMs": [
+        {
+            "assetGroup": "",
+            "store": "", //Branch
+            "quantity": ""
+        }
+    ]
+
+private string GetNextCodeBranch<T>(IEnumerable<T> items) where T : class
+{
+    var lastCode = items.MaxBy(item => item.GetType().GetProperty("CODE").GetValue(item)).CODE;
+    return CodeExtensions.IncrementCode(lastCode);
+}
+
+    extensions method in c# passcode return this code and increment 1 "code like(0001,abc0001,code_001)
+    note : code maybe have char and string 
+
+"ORD_PICK_LIST_HDR" violates foreign key constraint "FK_ORD_OUT_BOUND_HDR_PICK
+
+
+    Microsoft.EntityFrameworkCore.DbUpdateException
+  HResult=0x80131500
+  Message=An error occurred while updating the entries. See the inner exception for details.
+  Source=Microsoft.EntityFrameworkCore.Relational
+  StackTrace:
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(DbContext _, ValueTuple`2 parameters)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded) in C:\projects\npgsql-entityframeworkcore-postgresql\src\EFCore.PG\Storage\Internal\NpgsqlExecutionStrategy.cs:line 39
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IReadOnlyList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IReadOnlyList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges()
+   at Compass.Areas.MasterDataFAM.BusinessLogic.OutBoundBL.AddAssetLine(OutBoundDtlVM lineModel) in C:\Users\HP\source\repos\Compass.FAM-v6\newCompass\Areas\OrdersManagement\BusinessLogic\OutBoundBL.cs:line 90
+   at Compass.Areas.OrdersManagement.Controllers.OutBoundController.AddAssetLineToOutBound(OutBoundDtlVM outBoundDtlVM) in C:\Users\HP\source\repos\Compass.FAM-v6\newCompass\Areas\OrdersManagement\Controllers\OutBoundController.cs:line 73
+
+Inner Exception 1:
+PostgresException: 42703: column "ParentCategory" of relation "ORD_OUT_BOUND_DTL" does not exist

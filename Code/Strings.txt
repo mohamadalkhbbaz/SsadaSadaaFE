@@ -1,0 +1,12 @@
+Using String Interpolation:
+
+
+string yourParameterValue = ".txt"; // Replace this with the actual parameter value
+throw new Exception($"extension_file_is_wrong: {yourParameterValue}");
+
+
+Using String Concatenation:
+
+
+string yourParameterValue = ".txt"; // Replace this with the actual parameter value
+throw new Exception("extension_file_is_wrong: " + yourParameterValue);

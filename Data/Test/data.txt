@@ -1,0 +1,109 @@
+location : 
+
+        locationType  : 
+
+            "description": "InspectionArea",
+                "level": 0,
+                "id": 1,
+        "description": "ShippingArea",
+                "level": 0,
+                "id": 2,
+        "description": "Country",
+                "level": 1,
+                "id": 4,
+        "description": "City",
+                "level": 2,
+                "id": 5,
+        "description": "MainWarehouse",
+                "level": 3,
+                "id": 3,
+        "description": "Asile", 
+                "level": 4,
+                "id": 6,
+        "description": "Row",
+                "level": 5,
+                "id": 7,
+        "description": "Shelf",
+                "level": 6,
+                "id": 8,
+        "description": "Bin",
+                "level": 7,
+                "id": 9,
+
+
+create Data 
+1 Country 
+2 MainWarehouse
+3 Shelf
+
+notes :
+كل شي عدا 1,2,3 
+هو منطقة تخزين
+
+  STORAGE_AREA_SHOULD_BE_UNDER_WAREHOUSE
+
+
+
+
+Category : 
+1 Electronics
+2 Laptops
+3 Hp 
+
+
+itemType
+{
+        "id": 1,
+        "description": "Asset"
+    },
+    {
+        "id": 2,
+        "description": "Consumable"
+    },
+    {
+        "id": 3,
+        "description": "Spare Part"
+    },
+    {
+        "id": 4,
+        "description": "Tool"
+    }
+
+"UOM":
+1-"Piece"
+2-"Dozen"
+3-"Gram"
+4-"kilogram"
+5-"Ton"
+
+
+"COSTING_METHOD" : 
+11-Direct 
+12-average
+
+"HANDLING_METHOD" : 
+13-Expiry
+14-LIFO
+15-FIFO
+16-General
+
+-------------
+item
+1
+2
+
+
+Transaction 
+
+
+
+
+
+
+
+
+vendor repository in update
+
+            vendor.UpdateDate = DateTime.UtcNow;
+            vendor.UpdateUserId = _dbContext.User.FirstOrDefault().Id;
+            

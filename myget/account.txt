@@ -1,0 +1,36 @@
+
+
+my get
+m.alkhabaz@transtek.com
+
+
+transtek
+Mn.Z9d8pf2c@WN!
+
+
+
+
+
+
+
+
+
+
+WHAT IS MYGET?
+MYGET IS A SECURE, SCALABLE, PACKAGE MANAGEMENT PLATFORM FOR DEVELOPMENT TEAMS TO OPTIMIZE RELEASE & FEEDBACK CYCLES. CREATE AND SHARE NUGET, NPM, BOWER, MAVEN, VSIX FEEDS!
+
+MyGet provides friction-free continuous integration & delivery for a variety of dependency and package managers out there, such as NuGet, .NET debugger symbols, NPM, Bower, VSIX, Maven, ...
+
+MyGet provides hosted package repositories for individual developers, open source projects and corporate development teams.
+
+Create feeds for your developers, clients or the entire world using secured access. Work together using activity streams and RSS. Push your symbols packages too and enable a smooth debugging experience for your package consumers.
+
+MyGet repositories can contain your own libraries, artifacts as well as third party packages. In fact, packages can come from your build server, NuGet.org, Maven Central and Visual Studio Team Services, GitHub, BitBucket or CodePlex where we transform your source code into a compiled NuGet package.
+
+Audit dependencies used by your organization. Support your release process with configurable upstream package sources, versioning rules, package filters and staged dependencies.
+
+
+
+
+
+

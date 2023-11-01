@@ -1,0 +1,5 @@
+dotnet add package FluentValidation.DependencyInjectionExtensions --version 11.5.1
+FluentValidation.AspNetCore
+
+
+

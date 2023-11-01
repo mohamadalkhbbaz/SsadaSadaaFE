@@ -1,0 +1,61 @@
+Aggregate Root '
+Item
+Category 
+Location
+UoM
+Transaction
+Transfer
+Audit
+
+Terms
+Periods
+Currency
+Borrower
+Vendor
+
+--------------------------------------
+Item Entity : 
+item * -  item class
+item class - * item
+
+item * -  item type
+
+item * - Category
+
+item * - Uom
+and * *  => Item * * UoM Conversion
+and * * => Item * * UoM barcode
+
+
+Category Entity : 
+category * - Category Type 
+category * - UoM
+category * - item 
+
+
+UoM Entity : 
+
+UoM  - * UoM Conversion
+
+item - * Item Balance 
+item - * Item Balance History
+
+
+Location Entity : 
+Location * - location Type
+
+
+Transfer Entity : 
+Transfer - * Transfer Line
+Transfer * - Transaction Label
+
+Transaction Entity : 
+Transaction * - Transaction Label
+Transaction * - Transaction Line
+
+
+Vendor Entity : 
+vendot - * Transactions
+
+
+

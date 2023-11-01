@@ -1,0 +1,18 @@
+//Apply OrderBy depeneding on the type of handling method
+            if (handlingMethodID == 15 || handlingMethodID == 16)//FIFO or General
+                inTransactionLines = inTransactionLines.OrderBy(x => x.TransactionDate).ToList();
+            else if (handlingMethodID == 14)//LIFO
+                inTransactionLines = inTransactionLines.OrderByDescending(x => x.TransactionDate).ToList();
+            else//Expiry
+                inTransactionLines = inTransactionLines.OrderBy(x => x.ExpiryDate).ToList();
+
+
+
+return model 
+{
+borrwoerId
+items
+{
+  id , quantity , serials [], 
+}
+}

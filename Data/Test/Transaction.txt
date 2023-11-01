@@ -1,0 +1,44 @@
+1 -> TransactionLable
+    "In"
+        "Purchase"
+        "Return Sales"  
+    "Out"
+        Sales
+        Scrap
+        Return
+    "Transfer"
+        Store Transfer
+    "ReciveTransfer"
+        Transfer - Fix balance
+    "IssueTransfer"
+        Transfer - Fix balance
+    "AuditIn"
+        Audit - Resolve Excess
+    "AuditOut"
+        Audit - Resolve Shortage
+    "Borrowe"
+        Borrowe 
+ Borrowe/returned
+
+TransactionType
+        TransactionIn, 0
+        TransactionOut,1
+        TransferIn, 2
+        TransferOut ,3
+        BorrowIn, 4
+        BorroweReturnOut 5
+
+        
+  public enum EventType
+    {
+        ReturnToVendor, 
+        ReturnToDestination,
+        KeepInInspection
+    }
+
+    public enum ItemsStatus
+    {
+        Good,
+        Bad,
+        NeedRepair
+    }

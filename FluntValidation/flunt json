@@ -1,0 +1,12 @@
+
+AddControllers()
+                .AddFluentValidation(fv =>
+                {
+                    fv.DisableDataAnnotationsValidation = true;
+                    fv.ImplicitlyValidateChildProperties = true;
+                    fv.AutomaticValidationEnabled = false;
+                })
+                .AddJsonOptions(options =>
+                {
+                    optionsJsonSerializerOptions..PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+                });

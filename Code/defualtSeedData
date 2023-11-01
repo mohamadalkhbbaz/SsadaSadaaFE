@@ -1,0 +1,38 @@
+
+        public string GetByValAndTypeTest(string type, string val)
+        {
+            var model = DefaultTtglistSeedData.ttgList.FirstOrDefault(x => x.LIST_ITEM.ToLower() == type.ToLower() && x.LIST_VAL == val);
+            return L(model);
+        }
+
+
+
+        public static class DefaultTtglistSeedData
+{
+
+
+    public static List<TTG_LIST> ttgList = new List<TTG_LIST>()
+        {
+            new TTG_LIST{
+                LIST_ITEM = "ORD_OUT_HDR_STATUS",
+                LIST_SER = 1 ,
+                LIST_VAL = "1",
+                LIST_EN_TXT = "Draft" ,
+                LIST_AR_TXT =  "مسودة",
+                },
+              new TTG_LIST{
+                LIST_ITEM = "ORD_OUT_HDR_STATUS",
+                LIST_SER = 2 ,
+                LIST_VAL = "2",
+                LIST_EN_TXT = "In preparation" ,
+                LIST_AR_TXT =  "قيد التحضير",
+                },
+                new TTG_LIST{
+                LIST_ITEM = "ORD_OUT_HDR_STATUS",
+                LIST_SER =3 ,
+                LIST_VAL = "3",
+                LIST_EN_TXT = "Confirmed" ,
+                LIST_AR_TXT =  "مؤكد",
+                },
+        };
+}
