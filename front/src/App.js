@@ -5,10 +5,19 @@ import Col from 'react-bootstrap/Col';
 function App() {
   return (
     <div className="App">
-     <Container>
+     <Container className='py-5'>
+     <Row className='justify-content-center'>
+          <Col sm="8" className='dates-count'> one Row </Col>
+      </Row>
       <Row className='justify-content-center'>
         <div className='rectangle'>
-          <Col>Our their growth and success.</Col>
+          <Col>Row2.</Col>
+        </div>
+      </Row>
+      <Row className='justify-content-center'>
+        <div className='btn-style'>
+          <Col lg="3">Row3.</Col>
+          <Col lg="3">Row3.2</Col>
         </div>
       </Row>
     </Container>
