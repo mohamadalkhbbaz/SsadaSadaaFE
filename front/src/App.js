@@ -1,13 +1,15 @@
 import './App.css';
+import GenericList from './components/GenericList';
 import PostList from './components/PostsList';
 import UserList from './components/UserList';
 
 function App() {
   return (
     <div className="App">
-      <UserList />
+      {/* <UserList /> */}
       <hr></hr>
-      <PostList />
+      {/* <PostList /> */}
+      <GenericList />
     </div>
   );
 }
