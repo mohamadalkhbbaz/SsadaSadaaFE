@@ -1,1 +1,27 @@
-Go PRo
+1. npm install react-query
+
+2. Set up React Query Provider:
+
+Wrap your application with the QueryClientProvider in your index.js or App.js file.
+
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient();
+
+ReactDOM.render(
+  <QueryClientProvider client={queryClient}>
+    <App />
+  </QueryClientProvider>,
+  document.getElementById('root')
+);
+
+
+3. Create a Query Hook:
+
+
+
+
+note Code : 
+    return useQuery( endpoint, fetchData);
+if you need pass parameters ->    return useQuery( endpoint,() => fetchData(endpoint));
+
