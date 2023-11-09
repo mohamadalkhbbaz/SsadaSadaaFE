@@ -1,9 +1,15 @@
 import {useQuery} from 'react-query';
-import consts from '../consts'
+import {baseUrl, authToken } from '../consts'
 
 const fetchData = async (endpoint) =>
 {
-    const response = await fetch(consts+endpoint);
+    const response = await fetch( baseUrl + endpoint,{
+        method: 'Get',
+        headers : {
+            'Content-Type' : 'application-',
+            'Authorization' : `Bearer ${authToken}`
+        }
+    });
     return response.json(); 
 }
  

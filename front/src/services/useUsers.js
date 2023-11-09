@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import baseUrl from '../consts'
+import {baseUrl} from '../consts'
 
 const fetchData = async ()=>
 {
