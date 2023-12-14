@@ -1,0 +1,37 @@
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web;
+using CompassModels.FAM;
+using CompassModels.Security;
+using Microsoft.Ajax.Utilities;
+
+namespace Compass.Areas.MasterDataFAM.ExtensionsMethods
+{
+    public class Translate
+    {
+        public string L<T>(T entity) where T : class
+        {
+            string lang = HttpContext.Current.Session["language"].ToString().ToLower();
+            string result = entity switch
+            {
+                FIN_FA_LOCATION location => lang == "ar" && !location.LOC_DESC_AR.IsNullOrWhiteSpace() ? location.LOC_DESC_AR : location.LOC_DESC,
+                MS_WORK_CENTERS workCenter => lang == "ar" && !workCenter.DESCRIPTION_AR.IsNullOrWhiteSpace() ? workCenter.DESCRIPTION_AR : workCenter.DESCRIPTION,
+                CompassModels.FAM.MS_BRANCHS branch => lang == "ar" && !branch.DESCRIPTION_AR.IsNullOrWhiteSpace() ? branch.DESCRIPTION_AR : branch.DESCRIPTION,
+                CompassModels.Security.MS_BRANCHS branch => lang == "ar" && !branch.DESCRIPTION_AR.IsNullOrWhiteSpace() ? branch.DESCRIPTION_AR : branch.DESCRIPTION,
+                MS_CITIES city => lang == "ar" && !city.CTY_ENG_NAME.IsNullOrWhiteSpace() ? city.CTY_ENG_NAME : city.CTY_CITYNAME,
+                MS_COUNTRIES country => lang == "ar" && !country.DESC_EN.IsNullOrWhiteSpace() ? country.DESC_EN : country.DESCRIPTION,
+                CompassModels.FAM.TTG_LIST ttg => lang == "ar" && !ttg.LIST_AR_TXT.IsNullOrWhiteSpace() ? ttg.LIST_AR_TXT : ttg.LIST_EN_TXT,
+                FIN_FA_TYPE type => lang == "ar" && !type.TYPE_DESC_AR.IsNullOrWhiteSpace() ? type.TYPE_DESC_AR : type.TYPE_DESC,
+                FIN_FA_CATEGORY category => lang == "ar" && !category.CAT_DESC_AR.IsNullOrWhiteSpace() ? category.CAT_DESC_AR : category.CAT_DESC,
+                FIN_FA_GROUP group => lang == "ar" && !group.GRP_DESC_AR.IsNullOrWhiteSpace() ? group.GRP_DESC_AR : group.GRP_DESC,
+                FIN_FA_DEFINITION asset => lang == "ar" && !asset.DEF_DESC_AR.IsNullOrWhiteSpace() ? asset.DEF_DESC_AR : asset.DEF_DESC,
+                _ => "Not Found"
+            };
+            return result;
+        }
+    }
+}

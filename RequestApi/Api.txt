@@ -1,0 +1,58 @@
+
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Text;
+
+namespace testLoginWebsite.Controllers
+{
+    [ApiController]
+    [Route("[controller]")]
+    public class HomeController : ControllerBase
+    {
+        [HttpGet]
+        public async Task<IActionResult> TestApiAsync()
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                string apiUrl = "https://transtek.com/gurgsduewtwdabfwrqttlogin";
+
+                var requestData = new Dictionary<string, string>
+                {
+                    { "log", "trnstekadmin" },
+                    { "pwd", "h8r#exs4$#^&V1*D#@%6X%WP%lw8OLR" },
+                    { "g-recaptcha-response", "03AFcWeA4RukzWwFPoX791WpguAsR3A2Xsiy8hbP1CZu3rylrfGAsOkynW9_37IFJP4NjYhZEaGV8QdzMIJ9QpprTd2wrhsUbJAXSJS5PCSTQZFm-jY40zbHB_ioK4V-F53OP_2QuceBWyM2NjXA1RSGDh9U1IAqLYBCXAdGpI4CyrwDisq28PFjyDkMKTUQImaV0pLMYlfjzfA7bBuL8OELYvW-9zLtORgurDQdZu9_tyuKhLqG9ubBoy-mtuvk48IpO0PbtQV4DzeyJe2Dn5ivhe-NY4km1jS2PVYPM5Jur9K7gpyB74NkgJw4CuHxRu-VXU3fYMIm4Dw9gnlyW-VhxJwazH6-8YpcsKI3hxxDH_v5UfWJt3Rx_3PILAFSNNDfu3_Rif2RbUFzrcN-5_caYF721NkKQVS66uKYcPyfK5Ll1wzhBLRV8hGGXg3c8SVbr4kXk0dbpNxf8ix-g-cTCAOJoumdeCKamu2Z03hCHhGIPKa6tZ-S5i2lmayfviBy1kKhMlxv67f_Y0h2U_GSw0dvXrFVFAZZitBxVmDvNbOsWQn9gTvt1otUbMnuSdbLDZGGgS74ECQZfuxuJW6rzNeaqYV9bDFrgar7dClLw7e_ovhKTL-O8yHuLAz2Bo_b_43WSsAXu3nfd8xszmOOCfWqJxW2TkA0G74e7p4cmDPIEROwDHyo--PcMePxlHE3PCAqhO_dDtZu_80HL_QMIF-_5hEhpkvy4_a73FvHLWP-l-nf-4cQw20ZS8Sm50uojAz_D7GkaNP43CoYmGJv0gtw5dDEL8m_MO5neNcVflxbtJ4SxLAPCGMSPdt1BIQc0IMH1c1YK1VTDHwN4Xica3OQ4lgpd3HmQo77kv_maN2Wydrwq_9xeDZJIUN40Ob-uhf8hX_5nnE6Nms4ADMbebYBHi-H_EtcpsWNcr9FbpeLfPyHZcU4_Bs6Q-93cqxyfdMggU6v9OVOYLVpvYvl08l6yWHcSWUMqzFwqZALjpUq4B8Vaso3elTldnBTD51tfIbX6hWMxGBDiL-DMtE5lpRLejmmdubIAnlO1duuFSj5Jb5eiQj6PekbialHwrGBALEYGeA9nw6xignk3C4wWmM6vRg2cxuhLZ9jjO-2LwMd4uNUpUxBKA1PGPp0O-i_RAlm8OxhM0ubaRBA_hpPb9vlY6jwIs0LrvRIkMHIJWvtSXOyvQHBvGI5jCyn8A6avoQUDMeev0XnvOl4KdXR2MWAsK8NGAFOHdnuqkSxu1uoXvM8WCyRpQf9tEPRcf_FT0LK3TyxXL4VHQV-soz_7Q2jok5f-HSSr0zqeCiTbcvWDbMMMm0AkaCeLhETohpRRnqrQ5tq6AYMao5ffErO26zTbxTeQZrZMe1B6g8Lnj-bEvIZmowxz3JRdkv2kGnA1udeG_xoS8zzbzqUv6HlAEz6t6UdtOBWowV3l_yAnn2r2eFJ6DInio5n4NwkCFAO2uWV_yw4_bZusohN5W7zMpHYx-XYTN7BepwspIfQyZvQ6ghL8iZHITJipBZ9qyMDMZf-8G46AzEwLx48fJIirUOcrnfHBmEqvueDhKm4NVbd6n5fYJNPE" },
+                    { "wp-submit", "Log In" },
+                    { "redirect_to", "https://transtek.com/wp-admin/" },
+                    { "testcookie", "1" }
+                };
+                var content = new MultipartFormDataContent();
+                foreach (var kvp in requestData)
+                content.Add(new StringContent(kvp.Key), kvp.Value);
+         
+
+                try
+                {
+                    HttpResponseMessage response = await httpClient.PostAsync(apiUrl, content);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string content2 = await response.Content.ReadAsStringAsync();
+                        Console.WriteLine(content2);
+                        return Ok(content2);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
+                        return Ok($"Error: {response.StatusCode} - {response.ReasonPhrase}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Exception: {ex.Message}");
+                    return Ok($"Exception: {ex.Message}");
+
+                }
+            }
+        }
+    }
+}
