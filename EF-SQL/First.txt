@@ -1,0 +1,59 @@
+EF : 
+"sp_executesql" يستخدم تقنية ديناميكية لتنفيذ استعلام باستخدام إجراء مخزن مسمى   
+ex : 
+"
+
+exec sp_executesql 
+N'SELECT [t].[Id], [t].[Curriculum], [t].[Name] FROM [Teachers] AS [t]
+
+ORDER BY (SELECT 1) OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY'
+
+,N'@__p_0 int,@__p_1 int',@__p_0=1,@__p_1=2
+
+"
+
+OFFSET يستخدم ل تخطي عدد من السطور
+FETCH NEXT واسترجاع عدد معين من الصفوف  
+اما (@__p_0,@__p_1) ==>  ف هو متغيرات يتم استخدامه في الاجراء المخزن 
+
+
+Generally, the N prefix is used when dealing with Unicode text,
+which includes characters beyond the ASCII range and supports multiple languages.
+
+
+or this way 
+DECLARE @sql NVARCHAR(MAX)
+DECLARE @__p_0 INT = 1
+DECLARE @__p_1 INT = 2
+
+SET @sql = 
+    N'SELECT TOP ' + CAST(@__p_1 AS NVARCHAR(10)) + 
+    N' [t].[Id], [t].[Curriculum], [t].[Name] FROM [Teachers] AS [t]'
+
+EXEC sp_executesql @sql
+
+
+>?>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+1_List<Teacher> teachers = _dbContext.Teachers.Skip(1).Take(2).ToList();
+SQL>
+exec sp_executesql N'SELECT [t].[Id], [t].[Curriculum], [t].[Name]
+FROM [Teachers] AS [t]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY',N'@__p_0 int,@__p_1 int',@__p_0=1,@__p_1=2
+
+2_List<Teacher> teachers = _dbContext.Teachers.Where(x=>x.Id == 1).ToList();
+SELECT [t].[Id], [t].[Curriculum], [t].[Name]
+FROM [Teachers] AS [t]
+WHERE [t].[Id] = 1
+
+3_List<Teacher> teachers = _dbContext.Teachers.Where(x=>x.Id == 3 && x.Name == "mhd").ToList();
+SELECT [t].[Id], [t].[Curriculum], [t].[Name]
+FROM [Teachers] AS [t]
+WHERE [t].[Id] = 3 AND [t].[Name] = N'mhd'
+
+4_ List<Teacher> teachers = _dbContext.Teachers.Where(x=>x.Id == 3 ).Skip(0).Take(1).ToList();
+exec sp_executesql N'SELECT [t].[Id], [t].[Curriculum], [t].[Name]
+FROM [Teachers] AS [t]
+WHERE [t].[Id] = 3
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY',N'@__p_0 int,@__p_1 int',@__p_0=0,@__p_1=1
