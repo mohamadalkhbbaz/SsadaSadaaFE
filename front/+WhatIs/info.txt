@@ -1,1 +1,27 @@
-Go PRo
+1. npm install -g yarn
+Let's start by installing axios, redux, redux toolkit and react router dom:
+2. yarn add react-redux react-router-dom axios @reduxjs/toolkit react-hook-form
+3. yarn add @chakra-ui/react @emotion/react @emotion/styled framer-motion
+4.yarn add react-router-dom
+5.yarn add @chakra-ui/icons
+
+
+
+
+tutorial-project
+┣ node_modules
+┣ public
+┣ src
+┃ ┣ assets
+┃ ┣ App.css
+┃ ┣ App.jsx
+┃ ┣ index.css
+┃ ┗ main.jsx
+┣ .gitignore
+┣ index.html
+┣ package.json
+┣ vite.config.js
+┗ yarn.lock
+
+
+
