@@ -1,1 +1,7 @@
 Go PRo
+smallproject-question_answoer
+
+
+installs : 
+npm install react-bootstrap bootstrap
+
