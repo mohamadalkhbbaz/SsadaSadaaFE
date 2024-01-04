@@ -59,6 +59,31 @@ timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
 
 # Run pg_dump command with timestamp in the file name
 pg_dump --username=postgres --dbname=db --clean > /path/to/backups/backup-${timestamp}.sql
+------ 
+#!/bin/bash
+
+# Replace this with the actual path to your PostgreSQL bin directory
+POSTGRES_BIN="/usr/pgsql-13/bin"
+
+# Replace this with the actual path where you want to store backups
+BACKUP_PATH="/path/to/backups"
+
+# Add the PostgreSQL bin directory to the PATH
+export PATH="$POSTGRES_BIN:$PATH"
+
+# Get the current date and time
+timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
+
+# Set the PostgreSQL password (if required)
+export PGPASSWORD=123
+
+# Run pg_dump command with timestamp in the file name and password
+$POSTGRES_BIN/pg_dump --username=postgres --dbname=db --clean --no-password --file="$BACKUP_PATH/backup-$timestamp.sql"
+
+# Clear sensitive variables
+unset PGPASSWORD
+unset POSTGRES_BIN
+unset BACKUP_PATH
 
 ................................. TestRestore
 open cmd : 
