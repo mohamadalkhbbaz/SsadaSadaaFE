@@ -1,0 +1,104 @@
+@echo off
+
+REM Get the current date and time using PowerShell
+for /f "delims=" %%a in ('powershell -command "Get-Date -Format 'yyyy-MM-dd_HH-mm-ss'"') do set "timestamp=%%a"
+
+REM Run pg_dump command with timestamp in the file name
+"C:\Program Files\PostgreSQL\13\bin\pg_dump.exe" --username=postgres --dbname=db --clean > D:\Backups\backup-%timestamp%.sql
+
+-------------
+in win : 
+@echo off
+
+REM Add the PostgreSQL bin directory to the PATH
+set "PATH=C:\Program Files\PostgreSQL\13\bin;%PATH%"
+
+REM Get the current date and time using PowerShell
+for /f "delims=" %%a in ('powershell -command "Get-Date -Format 'yyyy-MM-dd_HH-mm-ss'"') do set "timestamp=%%a"
+
+REM Run pg_dump command with timestamp in the file name
+pg_dump --username=postgres --dbname=db --clean > D:\Backups\backup-%timestamp%.sql
+
+---with pass
+
+@echo off
+
+REM Replace this with the actual path to your PostgreSQL bin directory
+set "POSTGRES_BIN=C:\Program Files\PostgreSQL\13\bin"
+
+REM Replace this with the actual path where you want to store backups
+set "BACKUP_PATH=D:\Backups"
+ 
+REM Add the PostgreSQL bin directory to the PATH
+set "PATH=%POSTGRES_BIN%;%PATH%"
+
+REM Get the current date and time using PowerShell
+for /f "delims=" %%a in ('powershell -command "Get-Date -Format 'yyyy-MM-dd_HH-mm-ss'"') do set "timestamp=%%a"
+
+REM Set the PostgreSQL password
+set "PGPASSWORD=123"
+
+REM Run pg_dump command with timestamp in the file name and password
+"%POSTGRES_BIN%\pg_dump.exe" --username=postgres --dbname=db --clean --no-password --file="%BACKUP_PATH%\backup-%timestamp%.sql"
+
+REM Clear sensitive variables
+set "PGPASSWORD="
+set "POSTGRES_BIN="
+set "BACKUP_PATH="
+
+.....................
+
+in linux : 
+#!/bin/bash
+
+# Add the PostgreSQL bin directory to the PATH
+export PATH="/usr/pgsql-13/bin:$PATH"
+
+# Get the current date and time
+timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
+
+# Run pg_dump command with timestamp in the file name
+pg_dump --username=postgres --dbname=db --clean > /path/to/backups/backup-${timestamp}.sql
+
+................................. TestRestore
+open cmd : 
+"C:\Program Files\PostgreSQL\13\bin\psql.exe" --username=postgres --dbname=testFinalRestore --file="D:\Backups\backup-2024-01-04_14-12-02.sql" -W
+...................................
+pg_dump --username=postgres  --dbname=db  --clean > D:\Backups\backup-`date +%Y-%m-%d-%H-%M-%S`.sql
+
+pg_dump -U postgres -d db > D:\Backups\backup_file.sql
+
+pg_dump --username=postgres  --dbname=db  --clean > D:\Backups\backup1111.sql
+pg_dump --username=postgres --dbname=db --clean --file=D:/Backups/backup-`date +%d-%m-%Y-%H-%M-%S`.sql
+
+pg_restore -U postgres -d ss D:/Backups/backupNew.sql
+pg_dump --username=postgres --dbname=db --clean > D:/Backups/backup-2024-01-04_12-56-29.sql
+
+pg_dump -U postgres -d db > D:\Backups\JOIN.sql
+
+"C:\Program Files\PostgreSQL\13\bin\pg_dump.exe" CREATE DATABASE "JOIN";
+"C:\Program Files\PostgreSQL\13\bin\pg_dump.exe" drop DATABASE "TestRestore";
+pg_restore --dbname=TestRestore --verbose D:/Backups/backup-2024-01-04_13-18-01.sql
+ERROR: syntax error at or near "pg_dump" LINE 1: pg_dump --username=pgagentUser --dbname=db > D:\Backups\b... ^
+ERROR: syntax error at or near "pg_dump" LINE 1: pg_dump --username=postgres --dbname=db > D:\Backups\back... ^
+
+C:\Users\HP\AppData\Local\Programs\pgAdmin 4\v6\runtime\pg_dump.exe --file "C:\\Users\\HP\\DOCUME~1\\sss" --host "localhost" --port "5432" --username "postgres" --no-password --verbose --format=c --blobs "db"
+
+pg_restore -U postgres -h localhost -p 5432 -d ss   < D:/Backups/backup-2024-01-04_12-56-29.sql
+pgagentUser
+123
+
+
+SELECT * FROM pgagent.pga_jobstep(
+    pjobid := 'your_job_id',
+    pjobstep := 1,
+    pdbname := 'db',
+    pjobname := 'Your Job Name',
+    pscript := 'C:\path\to\backup_script.bat',
+    ptype := 'b',
+    pagentid := 'pgAgent',
+    phostagent := 'localhost'
+);
+
+
+ERROR: function pgagent.pga_jobstep(pjobid => unknown, pjobstep => integer, pdbname => unknown, pjobname => unknown, pscript => unknown, ptype => unknown, pagentid => unknown, phostagent => unknown) does not exist LINE 1: SELECT * FROM pgagent.pga_jobstep( ^ HINT: No function matches the given name and argument types. You might need to add explicit type casts.
