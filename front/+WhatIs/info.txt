@@ -1,1 +1,49 @@
 Go PRo 
+"" 
+
+In today’s fast-paced world of software development,
+it is crucial to be familiar with design patterns
+that can help you create robust, efficient, and maintainable code. 
+One of the most widely used programming frameworks for enterprise applications is the .NET framework.
+In this article, 
+we will explore the most commonly used design patterns in .NET development and how they can be applied to solve common problems
+encountered in software development.
+
+""
+
+
+Before we dive into the most used design patterns in .NET development, let’s first understand what design patterns are.
+ Design patterns are a set of best practices and solutions to common problems that software developers face during 
+ the development process. These patterns are usually reusable, and can be applied to different projects.
+
+Design patterns are not a language feature or a library, but rather a way of organizing code to make it more maintainable,
+ extensible, and reusable. They are usually categorized into three types: creational patterns, structural patterns, 
+ and behavioral patterns.
+
+Creational patterns deal with object creation mechanisms, trying to create objects in a manner suitable to the situation.
+ Structural patterns deal with object composition, and behavioral patterns deal with communication between objects.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+In this video, I am going to teach you the following design pattern in asp.net Core
+There are many design patterns available in ASP.NET Core, and they can be used to solve various software design problems. Here are some of the most commonly used design patterns in ASP.NET Core
+Dependency Injection (DI) pattern:
+This pattern is used to provide a mechanism for injecting dependencies into a class, rather than creating them inside the class. ASP.NET Core has built-in support for DI, which can be configured using the built-in container or a third-party container such as Autofac or Ninject.
+
+Repository pattern:
+This pattern is used to abstract the data access layer from the rest of the application, by providing a set of interfaces for accessing data. This makes it easier to change the data storage technology without affecting the rest of the application.
+
+Unit of Work pattern: 
+This pattern is used to manage the transactional boundaries of a set of related operations. It ensures that all the operations are either committed or rolled back as a single unit of work.
+
+Decorator pattern:
+This pattern is used to add behavior to an object at runtime, without affecting the behavior of other objects of the same class. It is commonly used in ASP.NET Core to add cross-cutting concerns such as logging, caching, or validation.
+
+Factory pattern:
+This pattern is used to create objects without exposing the creation logic to the client. It provides a way to create objects of a certain type, without the client needing to know the details of how they are created.
+
+Strategy pattern: 
+This pattern is used to encapsulate a family of algorithms and make them interchangeable. It allows the client to choose the algorithm to be used at runtime.
+
+Singleton pattern:
+This pattern is used to ensure that only one instance of a class is created and used throughout the application. This can be useful for managing shared resources, such as database connections or configuration settings.
