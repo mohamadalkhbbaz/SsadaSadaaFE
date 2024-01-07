@@ -1,1 +1,131 @@
 Go PRo
+
+1. install packages: 
+
+dotnet new webapi -n CSharpCornerArticlesAPI
+cd CSharpCornerArticlesAPI
+dotnet add package MongoDB.Driver
+
+
+2. Create Model 
+
+Note : We use the BsonId and BsonRepresentation attributes to specify that the Id property is the primary key and 
+should be represented as an ObjectId in the MongoDB database.
+
+public class CSharpCornerArticle
+{
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string Id { get; set; }
+
+    public string Title { get; set; }
+
+    public string Content { get; set; }
+}
+
+
+3. Create a MongoDB Configuration 
+public class MongoDbConfiguration
+{
+    public string ConnectionString { get; set; }
+    public string DatabaseName { get; set; }
+}
+
+4. Configure MongoDB Connection
+{
+  "MongoDbConfiguration": {
+    "ConnectionString": "mongodb://localhost:27017",
+    "DatabaseName": "CSharpCornerArticlesDB"
+  },
+  "Logging": {}}
+
+
+5. Create a MongoDb Context
+    public class MongoDbContext
+    {
+           private readonly IMongoDatabase _db;
+           public MongoDbContext(IOptions<MongoDbConfiguration> options)
+           {
+               var client = new MongoClient(options.Value.ConnectionString);
+               _db = client.GetDatabase(options.Value.DatabaseName);
+           }
+           public IMongoCollection<Article> Articles => _db.GetCollection<Article>("Articles");
+    }
+
+6. Add in StartUp 
+// Configure MongoDB settings
+builder.Services.Configure<MongoDbConfiguration>(builder.Configuration.GetSection("MongoDbConfiguration"));
+//builder.Services.Configure<MongoDbConfiguration>((o) => { o.ConnectionString = " ss",o.DatabaseName = "ss"; });
+
+// Register MongoDbContext
+builder.Services.AddScoped<MongoDbContext>();
+
+7. Add Controller 
+    [ApiController]
+    [Route("api/[controller]")]
+    public class ArticlesController : ControllerBase
+    {
+        private readonly MongoDbContext _context;
+
+        public ArticlesController(IOptions<MongoDbConfiguration> settings)
+        {
+            _context = new MongoDbContext(settings);
+        }
+
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Article>>> Get()
+        {
+            var articles = await _context.Articles.Find(_ => true).ToListAsync();
+            return Ok(articles);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Article>> Get(string id)
+        {
+            var article = await _context.Articles.Find(a => a.Id == id).FirstOrDefaultAsync();
+
+            if (article == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(article);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] Article article)
+        {
+            await _context.Articles.InsertOneAsync(article);
+            return CreatedAtAction("Get", new { id = article.Id }, article);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(string id, [FromBody] Article article)
+        {
+            var existingArticle = await _context.Articles.Find(a => a.Id == id).FirstOrDefaultAsync();
+
+            if (existingArticle == null)
+            {
+                return NotFound();
+            }
+
+            article.Id = existingArticle.Id;
+            await _context.Articles.ReplaceOneAsync(a => a.Id == id, article);
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            var article = await _context.Articles.Find(a => a.Id == id).FirstOrDefaultAsync();
+
+            if (article == null)
+            {
+                return NotFound();
+            }
+
+            await _context.Articles.DeleteOneAsync(a => a.Id == id);
+            return NoContent();
+        }
+    }
