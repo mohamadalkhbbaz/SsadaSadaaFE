@@ -1,3 +1,2 @@
 Go PRo
-yarn add redux
-yarn add react-redux
+ add other components

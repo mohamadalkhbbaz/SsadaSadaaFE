@@ -1,41 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { DECREMENT, INCREMENT } from "../redux/actions/types";
-import { decrementAction, incrementAction, incrementByValueAction } from "../redux/actions/counterActions";
+import Increment from "./Increment";
+import Decrement from "./Decrement";
 
 function Counter() {
   // const [count, setCounter] = useState(0);
   const {count} = useSelector(state => state)
   const dispatch = useDispatch();
 
-  const handleIncrement = () => {
-    // setCounter(count + 1);
-    dispatch(incrementAction());
-  };
-  const handleDecrement = () => {
-    // setCounter(count - 1);
-    dispatch(decrementAction())
-  };
-  const handleIncrementByValue = (v) => {
-    dispatch(incrementByValueAction(v))
-  };
-
-
-  const [inputNumber,setInputNumber] =useState(0);
-
   return (
     <>
-      <div>Counter</div>
       <h3>{count}</h3>
-      <button onClick={handleIncrement}>++ </button>
-      <button onClick={handleDecrement}>-- </button>
-      <hr></hr>
-      
-      <input type="number" value={inputNumber} onChange={(e) => setInputNumber(parseInt(e.target.value))} />
-      <button onClick={() => handleIncrementByValue(inputNumber)}> + + +  </button>
-      {/* <button onClick={() => setCounter(count+1)}>++ </button>  
-      <button onClick={() => setCounter(count-1)}>-- </button> */}
-    </>
+      <Increment disp={dispatch} />
+      <Decrement disp={dispatch} />
+       </>
   );
 }
 
