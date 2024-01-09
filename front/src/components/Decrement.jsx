@@ -9,7 +9,7 @@ const Decrement = ({disp}) => {
 
   return (
     <div>
-    <button onClick={handleDecrement}>++ </button>
+    <button onClick={handleDecrement}>-- </button>
     </div>
   )
 }
