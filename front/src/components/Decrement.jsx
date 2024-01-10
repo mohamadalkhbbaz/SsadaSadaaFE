@@ -4,7 +4,7 @@ import { decrementAction } from '../redux/actions/counterActions';
 const Decrement = ({disp}) => {
 
     const handleDecrement = () => {
-        disp(decrementAction());
+        decrementAction(disp);
       };
 
   return (

@@ -5,7 +5,7 @@ import Decrement from "./Decrement";
 
 function Counter() {
   // const [count, setCounter] = useState(0);
-  const {count} = useSelector(state => state)
+  const { count } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   return (
@@ -13,7 +13,7 @@ function Counter() {
       <h3>{count}</h3>
       <Increment disp={dispatch} />
       <Decrement disp={dispatch} />
-       </>
+    </>
   );
 }
 

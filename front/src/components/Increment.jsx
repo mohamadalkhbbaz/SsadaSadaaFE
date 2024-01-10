@@ -4,14 +4,14 @@ import { incrementAction } from '../redux/actions/counterActions';
 const Increment = ({disp}) => {
 
     const handleIncrement = () => {
-        disp(incrementAction());
+         incrementAction(disp);
       };
 
   return (
     <div>
     <button onClick={handleIncrement}>++ </button>
     </div>
-  )
+  ) 
 }
 
 export default Increment
