@@ -1,17 +1,19 @@
-import React from 'react'
-import { incrementAction } from '../redux/actions/counterActions';
+import React from "react";
+import { incrementAction } from "../redux/actions/counterActions";
+import { increment } from "../redux/counterSlice";
 
-const Increment = ({disp}) => {
-
-    const handleIncrement = () => {
-         incrementAction(disp);
-      };
+const IncrementCom = ({ disp }) => {
+  
+  const handleIncrement = () => {
+    disp(increment());
+    console.log("ssada");
+  };
 
   return (
     <div>
-    <button onClick={handleIncrement}>++ </button>
+      <button onClick={handleIncrement}>++ </button>
     </div>
-  ) 
-}
+  );
+};
 
-export default Increment
+export default IncrementCom;
