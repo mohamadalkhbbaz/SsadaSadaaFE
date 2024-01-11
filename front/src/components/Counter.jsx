@@ -5,7 +5,7 @@ import { decrementAction, incrementAction, incrementByValueAction } from "../red
 
 function Counter() {
   // const [count, setCounter] = useState(0);
-  const {count} = useSelector(state => state)
+  const {count} = useSelector(state => state.counter)
   const dispatch = useDispatch();
 
   const handleIncrement = () => {
