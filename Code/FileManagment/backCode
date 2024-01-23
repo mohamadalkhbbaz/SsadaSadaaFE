@@ -1,0 +1,86 @@
+using Application.Interfaces;
+using Application.Statics;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Hosting;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Application.Services
+{
+    public class FileManager : IFileManager
+    {
+        public FileManager(IWebHostEnvironment hostEnvironment)
+        {
+            mainPath = hostEnvironment.WebRootPath;
+        }
+        private readonly string mainPath;
+        public async Task<string> UploadFile(IFormFile file, string folderName, string fileName)
+        {
+            if (!await IsImageValid(file))
+                return String.Empty;
+            return WritImage(file, folderName, fileName);
+        }
+        public async Task<string> UploadFile(IFormFile file, string folderName)
+        {
+            var split = file.FileName.Split('.');
+            return await UploadFile(file, folderName, String.Join('.', split.Take(split.Length - 1)));
+        }
+
+
+        private static async Task<bool> IsImageValid(IFormFile image)
+        {
+            byte[] fileBytes;
+            using (var ms = new MemoryStream())
+            {
+                await image.CopyToAsync(ms);
+                fileBytes = ms.ToArray();
+            }
+            return WriterHelper.GetImageFormat(fileBytes) != WriterHelper.ImageFormat.unknown;
+        }
+        private string WritImage(IFormFile image, string folderName, string fileName)
+        {
+            var extension = "." + image.FileName.Split('.')[^1];
+            CreateFolder(mainPath, folderName);
+            fileName = SetNameForFile(folderName, fileName, extension);
+            fileName += extension;
+            var path = Path.Combine(mainPath, folderName, fileName);
+            using (var bits = new FileStream(path, FileMode.Create))
+            {
+            }
+            return Path.Combine(mainPath, folderName, fileName);
+        }
+        private string SetNameForFile(string folderName, string fileName, string extension, int counter = 0)
+        {
+            string newFileName = fileName;
+            if (counter != 0)
+            {
+                newFileName += $"({counter})";
+            }
+            if (File.Exists(Path.Combine($"{mainPath}\\" + folderName + "\\" + newFileName + extension)))
+            {
+                return SetNameForFile(folderName, fileName, extension, ++counter);
+            }
+            return newFileName;
+        }
+        private static void CreateFolder(string path, string folderName)
+        {
+            if (!Directory.Exists(Path.Combine(path, folderName)))
+                Directory.CreateDirectory(Path.Combine(path, folderName));
+        }
+
+
+
+        public bool DeleteFile(string path)
+        {
+            path = Path.Combine(mainPath, path);
+            if (!File.Exists(path))
+                return false;
+            File.Delete(path);
+            return true;
+        }
+    }
+}
