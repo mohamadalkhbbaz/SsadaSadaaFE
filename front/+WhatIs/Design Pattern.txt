@@ -1,8 +1,0 @@
-Design Pattern
-1. RESTful API Design  
-2. GraphQL API Design : is a query language and runtime for APIs
-3. CQRS and Event Sourcing Pattern
-4. API Gateway Pattern
-5. Webhooks and Server-Pushed API Patterns
-6. Real-time communication with SignalR in .NET 7
-7. gRPC and Protocol Buffers
