@@ -1,1 +1,16 @@
-Go PRo
+Understanding Async Functions in JavaScript
+Before diving into how to handle async functions in React.js, let's briefly review what async functions are and how they work in JavaScript. Async functions are a syntactical feature introduced in ECMAScript 2017 (ES8) that simplifies working with asynchronous code by allowing you to use the await keyword inside a function marked as async. When you use await with a promise, the function execution is paused until the promise is resolved or rejected, and then it resumes with the result of the promise.
+
+Here's an example of an async function that fetches data from an API:
+
+async function fetchData(url) {
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
+}
+ 
+
+Using React Hooks : 
+in a function components u can use useEffect and useState hooks to handle async function .
+1. The useEffect hook allows you to perform side effects, such as data fetching, in functional components. 
+2. The useState hook allows you to manage local state in functional components.
